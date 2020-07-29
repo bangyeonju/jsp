@@ -7,7 +7,7 @@
   요청 URL : <%=request.getRequestURI() %><br>
   컨텍스트경로:<%=request.getContextPath() %><br>
   <br><br> 
- <form action="Ex01_result.jsp" >
+ <form action="Ex01_result.jsp" method="post" >
  	이름 : <input type="text" name="name" id="n"  value="길동"><br>
  	나이 : <input type="text" name="age" id="a" value="20"><br>
  	주소 : <input type="text" name="addr" id="b" value="서울"><br>

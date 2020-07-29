@@ -23,6 +23,7 @@ function check(){
 	}
 	
 	if($('input[name=pw]').val()==""){
+		$('input[name=pw]').focus();
 		alert("pw누락");
 		return false;
 	}
@@ -35,10 +36,10 @@ function check(){
 		return false;
 	}
 	if(!$('input[name=approve]').is(":checked")){
-		alert("결재방번을 선택해주세요");
+		alert("결재 방법을 선택해주세요");
 		return false;
 	}
-	if(!$('input[name=agree]').is(":checked")){
+	if(!$('#agree').is(":checked")){
 		alert("동의해주세요");
 		return false;
 	}
