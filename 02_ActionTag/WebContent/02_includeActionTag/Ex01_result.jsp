@@ -12,7 +12,6 @@
 <%-- <jsp:include page="Ex01_body.jsp"/> --%>=> <!-- 액션어 Ex01_body.jsp를 실행한 결과를 가지고 온다. -->
 <jsp:include page="Ex01_body.jsp">
 	<jsp:param name="addr" value="서울"/>
-	<!--  param은 Parameter입니다 -->
 </jsp:include>
 
 
