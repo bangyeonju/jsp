@@ -14,6 +14,10 @@
 	for(int i=0;i<bookstore.length;i++){
 	str += bookstore[i]+"";
 	}
+	
+	
+	
+	
  	out.print("<table border=1>"
  			+"<tr>"
  			+"<th>제목</th>"
