@@ -55,12 +55,13 @@
 <%
 out.print(mb3.getName() + mb3.getAge() + mb3.getAddr() + mb3.getTel() +mb3.getHobby());
 %>
+<jsp:useBean id="mb3" class="myPkg.MemberBean"/>
 
-<jsp:getProperty property="name" name="mb3"/>
-<jsp:getProperty property="age" name="mb3"/>
-<jsp:getProperty property="addr" name="mb3"/>
-<jsp:getProperty property="tel" name="mb3"/>
-<jsp:getProperty property="hobby" name="mb3"/>
+<jsp:getProperty property="name" name="mb4"/>
+<jsp:getProperty property="age" name="mb4"/>
+<jsp:getProperty property="addr" name="mb4"/>
+<jsp:getProperty property="tel" name="mb4"/>
+<jsp:getProperty property="hobby" name="mb4"/>
 
 
 
