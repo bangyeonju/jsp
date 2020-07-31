@@ -1,0 +1,27 @@
+제어판\시스템 및 보안\관리 도구 => 
+서비스 => OracleServiceORCL,OracleOraDB12Home1TNSListener 실행중!
+create table member(
+	id varchar2(12) primary key,
+	passwd varchar2(12) not null,
+	name varchar2(10) not null,
+	reg_date date default sysdate
+	);
+	
+	insert into  member values('iu',111,'아이유','2020-03-20');
+	insert into  member values('suji',222,'수지','2009-12-3');
+	
+	select * from member;
+	
+	C:\Oracle\product\12.2.0\dbhome_1\jdbc\lib에서 jar파일
+	JDBC 작성순서
+	0:JAR화일 포함(WenContent->WEB_INF->lib안에 넣기
+	1:드라이버로드 class.forName(~~)
+	2:계정접속DriverManager.getConnection(a,b,c);
+	3.sql문 분석 prepateStatement(sql);
+	4:?안에뭐
+	5:sql문 실행(select:executeQuery(),
+				insert,update,delect:executeUpdate()
+			)
+	6.연결끊기, 자원반납:close()
+	
+	

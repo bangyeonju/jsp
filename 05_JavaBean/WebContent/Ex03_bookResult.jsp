@@ -1,6 +1,6 @@
-<%@page import="myPkg.BookBean" %>
+<%@page import="myPkg.BookBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("UTF-8");
 	String title =request.getParameter("title");
 	String author= request.getParameter("author");
@@ -23,18 +23,18 @@
  			+"<th>제목</th>"
  			+"<td>"+title+"</td>"
  			+"</tr>"
- 					+"<th>저자</th>"
- 		 			+"<td>"+author+"</td>"
- 		 			+"</tr>"
- 		 					+"<th>출판사</th>"
- 		 		 			+"<td>"+publisher+"</td>"
- 		 		 			+"</tr>"
- 		 		 					+"<th>가격</th>"
- 		 		 		 			+"<td>"+price+"</td>"
- 		 		 		 			+"</tr>"
- 		 		 		 				+"<th>입고일</th>"
- 		 		 		  			+"<td>"+date+"</td>"
- 		 		 		  			+"</tr>"
+ 			+"<th>저자</th>"
+  			+"<td>"+author+"</td>"
+ 			+"</tr>"
+  			+"<th>출판사</th>"
+ 		 	+"<td>"+publisher+"</td>"
+ 		 	+"</tr>"
+ 		 	+"<th>가격</th>"
+ 		 	+"<td>"+price+"</td>"
+ 		 	+"</tr>"
+ 		 	+"<th>입고일</th>"
+ 		 	+"<td>"+date+"</td>"
+ 		 	+"</tr>"
  		 		 		  				+"<th>배송비</th>"
  		 		 		  			+"<td>"+kind+"</td>"
  		 		 		  			+"</tr>"		
@@ -47,7 +47,7 @@
 			+"</table>");
 
 %>
-		
+[자바객체이용]
 <%
 	BookBean bb = new BookBean();
 	bb.setTitle(title);
@@ -90,69 +90,68 @@
 
 %>
 
-	<jsp:useBean id="bb2" class="myPkg.BookBean"/>
+<jsp:useBean id="bb2" class="myPkg.BookBean" />
 
-	<jsp:setProperty property="*" name="bb2"/>
-	<%
+<jsp:setProperty property="*" name="bb2" />
+<%
 	bb2.setBookstore(str);
-%>	
-	<table border=1>
-			<tr>
- 			<th>제목</th>
- 			<td><jsp:getProperty property="title" name="bb2"/></td>
- 			</tr>
- 			<tr>
- 			<th>저자</th>
- 		 	<td><jsp:getProperty property="author" name="bb2"/></td>
- 		 	</tr>
- 		 	<tr>
- 		 	<th>출판사</th>
- 		 	<td><jsp:getProperty property="publisher" name="bb2"/></td>
- 		 	</tr>
- 		 	<tr>
- 		 	<th>가격</th>
- 		 	<td><jsp:getProperty property="price" name="bb2"/></td>
- 		 	</tr>
- 		 	<tr>
-			<th>입고일</th>
- 		 	<td><jsp:getProperty property="date" name="bb2"/></td>
- 		 	</tr>
- 		 	<tr>
-			<th>서점</th>
- 		 	<td><jsp:getProperty property="bookstore" name="bb2"/></td>
- 		 	</tr>
- 		 		<tr>
-			<th>배송비</th>
- 		 	<td><jsp:getProperty property="kind" name="bb2"/></td>
- 		 	</tr>
- 		 		<tr>
-			<th>보유수량</th>
- 		 	<td><jsp:getProperty property="count" name="bb2"/></td>
- 		 	</tr>
-	</table>
+%>
+<table border=1>
+	<tr>
+		<th>제목</th>
+		<td><jsp:getProperty property="title" name="bb2" /></td>
+	</tr>
+	<tr>
+		<th>저자</th>
+		<td><jsp:getProperty property="author" name="bb2" /></td>
+	</tr>
+	<tr>
+		<th>출판사</th>
+		<td><jsp:getProperty property="publisher" name="bb2" /></td>
+	</tr>
+	<tr>
+		<th>가격</th>
+		<td><jsp:getProperty property="price" name="bb2" /></td>
+	</tr>
+	<tr>
+		<th>입고일</th>
+		<td><jsp:getProperty property="date" name="bb2" /></td>
+	</tr>
+	<tr>
+		<th>서점</th>
+		<td><jsp:getProperty property="bookstore" name="bb2" /></td>
+	</tr>
+	<tr>
+		<th>배송비</th>
+		<td><jsp:getProperty property="kind" name="bb2" /></td>
+	</tr>
+	<tr>
+		<th>보유수량</th>
+		<td><jsp:getProperty property="count" name="bb2" /></td>
+	</tr>
+</table>
 
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

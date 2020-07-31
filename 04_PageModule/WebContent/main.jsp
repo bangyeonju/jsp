@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<form action="control.jsp">
+	<form action="control.jsp" method="post">
 <table border=1>
 	<tr>
 		<td colspan="2">제품을 선택해주세여</td>
