@@ -44,8 +44,6 @@ select.jsp
 					String name = rs.getString("name");
 					String reg_date = String.valueOf(rs.getDate("reg_date"));
 					
-					
-					
 					%>
 					<tr>
 					<td><%=id2 %></td>

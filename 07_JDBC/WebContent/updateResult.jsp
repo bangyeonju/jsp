@@ -1,3 +1,4 @@
+<%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
@@ -12,25 +13,45 @@
 	String name = request.getParameter("name");
 	Connection conn = null;
 	PreparedStatement ps = null;
-	try {
+	ResultSet rs = null;
+	
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = "jdbc:oracle:thin:@localhost:1521:orcl";
 		String id2 = "jspid";
 		String pw = "jsppw";
+	try {
 
 		Class.forName(driver);
 
 		conn = DriverManager.getConnection(url, id2, pw);
 
-		//분석
-		String sql = "update member set name=? where id=? and ";
+		String sql = "select id,passwd from member where id=?";
 		ps = conn.prepareStatement(sql);
-		ps.setString(1, name);
-		ps.setString(2, id);
+		ps.setString(1,id);
+		rs=ps.executeQuery();
+		
+		if(rs.next()){
+			String dbid= rs.getString("id");
+			String dbpw=rs.getString("passwd");
+			if(id.equals(dbid)&&passwd.equals(dbpw)){
+				
+			 sql = "update member set name=? where id=? and passwd=?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, name);
+			ps.setString(2, id);
+			ps.setString(3,passwd);
+			ps.executeUpdate();
+			
+			out.print("레코드를 수정했습니다.");
+			} else{
+				out.print("패스워드가 다릅니다.");
+		}
+			}else{
+				out.print("아이디가없습니다.");
+			}
+		//분석
 
-		int cnt = ps.executeUpdate();// 
-		if(cnt != 0)
-			out.print("member 테이블에 수정 성공");
+		
 	} catch (Exception e) {
 
 	} finally {
@@ -45,6 +66,13 @@
 		if(conn != null){
 			try{
 				conn.close();
+			}catch(SQLException e){
+				
+			}
+		}
+		if(rs != null){
+			try{
+				rs.close();
 			}catch(SQLException e){
 				
 			}

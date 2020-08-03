@@ -43,7 +43,7 @@ insertResult.jsp <br><br>
 		// 4.실행
 		int cnt = psmt.executeUpdate();// 
 		if(cnt != 0)
-			out.print("member 테이블에 삽입 성공");
+			out.print("테이블에 삽입 성공");
 		
 	}catch(Exception e){
 		
