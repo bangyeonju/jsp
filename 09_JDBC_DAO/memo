@@ -1,0 +1,30 @@
+drop table member;
+
+create table member(
+	num number primary key,
+	id varchar2(10) not null,
+	passwd varchar2(10) not null,
+	name varchar2(10) not null,
+	register date default sysdate
+);
+
+drop sequence m_seq;
+create sequence m_seq
+increment by 1
+start with 1
+minvalue 1
+maxvalue 10000
+nocache; 
+
+insert into member(num, id, passwd, name)
+values(m_seq.nextval,'IU','111','아이유');
+
+commit;
+
+col id for a10
+col passwd for a10
+select * from member;
+
+
+
+
