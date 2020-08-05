@@ -57,7 +57,7 @@ String[] approve={"카드","핸드폰"};
 %>
 <body>
 <h2> 이마트 상품 구매 내역 </h2>
-<FORM name="myform" METHOD="post" ACTION="Ex05_result_방연주.jsp">
+<FORM name="myform" METHOD="post" ACTION="insertProc.jsp">
 
  <span>아이디 :</span> <INPUT TYPE="text" NAME="id"><br>
  <span>비번 :</span> <INPUT TYPE="text" NAME="pw"><br>
