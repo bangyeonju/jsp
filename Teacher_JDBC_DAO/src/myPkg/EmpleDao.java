@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class EmpleDao {
 	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+	String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	String dbid="jspid";
 	String dbpw="jsppw";
 	Connection conn = null;
@@ -28,7 +28,7 @@ public class EmpleDao {
 	public void getConnection() {
 		try {
 			conn = DriverManager.getConnection(url,dbid,dbpw);
-			System.out.println("Ä¿³Ø¼Ç »ý¼ºµÊ");
+			System.out.println("Ä¿ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -19,7 +19,7 @@ minvalue 1
 maxvalue 10000
 nocache;
  
-insert into emart values(emart_seq.nextval,'kim','1234','ÀÇ·ù ','9½Ã~11½Ã','Ä«µå','µ¿ÀÇÇÔ');
+insert into emart values(emart_seq.nextval,'kim','1234', 'ì˜ë¥˜','9ì‹œ~11ì‹œ'	,'í•¸ë“œí°','ë™ì˜í•¨');
 
 
 col name for 99
