@@ -1,0 +1,33 @@
+
+
+ drop table emart;
+ drop sequence emart_seq;
+ 
+create table emart (
+no number primary key,
+id varchar2(20) not null,
+pw varchar2(20) not null,
+product varchar2(20) not null,
+time varchar2(20) not null,
+approve varchar2(20) not null,
+agree varchar2(20) not null);
+
+create sequence emart_seq
+increment by 1
+start with 1
+minvalue 1 
+maxvalue 10000
+nocache;
+
+insert into emart values(emart_seq.nextval,'kim','1234','의류 ','9시~11시','카드','동의함');
+
+
+col name for 99
+col id for a10
+col pw for a8
+col product for a8
+col time for a10
+col approve for a8
+col agree for a8
+
+commit;
