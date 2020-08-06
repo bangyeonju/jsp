@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class BookDao {
 	
 	String driver="oracle.jdbc.driver.OracleDriver";
-	String url="jdbc:oracle:thin:@localhost:1521:orcl";
+	String url="jdbc:oracle:thin:@localhost:1521:xe";
 	String username="jspid";
 	String userpw="jsppw";
 
@@ -87,5 +87,79 @@ public class BookDao {
 		return lists;
 		
 	}
+	
+	public int insertData(BookBean bean) {
+		getConnection();
+		int cnt =-1;
+		String sql = "insert into book values(b_seq.nextval,?,?,?,?,?,?,?,?)";
+		try {
+			System.out.println("insert1");
+			ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, bean.getTitle());
+			ps.setString(2, bean.getAuthor());
+			ps.setString(3, bean.getPublisher());
+			ps.setInt(4, bean.getPrice());
+			ps.setString(5, bean.getBuy());
+			ps.setString(6, bean.getKind());
+			ps.setString(7,bean.getBookstore());
+			ps.setInt(8, bean.getCount());
+			
+			cnt = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(conn!=null) {
+					conn.close();
+				}
+				if(ps!=null) {
+					ps.close();
+				}
+				
+				
+			} catch (Exception e) {
+			}
+			
+		}//finally
+		
+ 		
+		
+		return cnt;
+		
+	}
 
+	public int deleteData(int num) {
+		getConnection();
+		int cnt = -1;
+		String sql = "delete from book where num=?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, num);
+			cnt = ps.executeUpdate();
+					
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if(conn!=null) {
+					conn.close();
+				}
+				if(ps!=null) {
+					ps.close();
+				}
+				
+				
+			} catch (Exception e) {
+			}
+			
+		}//finally
+		
+ 		
+		
+		return cnt;
+	}
 }

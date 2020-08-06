@@ -15,8 +15,7 @@ deleteProc.jsp
 		msg="삭제실패";
 %>
 		<script type="text/javascript">
-			alert("<%=msg%>
-			");
+			alert("<%=msg%>");
 		</script>
 <%
 	response.sendRedirect("select.jsp");

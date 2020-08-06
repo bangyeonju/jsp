@@ -12,10 +12,13 @@ request.setCharacterEncoding("UTF-8");
 function insert(){
 	location.href = "insertForm.jsp"
 }
+function selectDelete(){
+	
+}
 </script>
 <form name="myform">
-<input type="button" value="삭제">
-<input type="button" value="수정 " onClick="insert()">
+<input type="button" value="삭제" onClick="selectDelete()"/>
+<input type="button" value="추가" onClick="insert()">
 <table border="1">
 <tr>
 	<th><input type="checkbox" name="selectCheck"></th>
@@ -46,7 +49,7 @@ for(BookBean bb : bean){
 <td><%=bb.getBookstore() %></td>
 <td><%=bb.getCount() %></td>
 <td>수정</td>
-<td>삭제</td>
+<td><a href="deleteProc.jsp?num=<%=bb.getNum()%>">삭제</a></td>
 </tr>
 <% 
 }
