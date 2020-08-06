@@ -1,55 +1,91 @@
-<%@page import="emart.emartDao"%>
+<%@page import="emart.EmartDao"%>
 <%@page import="emart.EmartBean"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-	<script type="text/javascript">
-	function insert(){
-		location.href="insertForm.jsp";//ÀÌµ¿ 
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("UTF-8"); %>
+<script type="text/javascript">
+	function insert() {
+		location.href = "insertForm.jsp";//ì´ë™ 
 	}
-	</script>
-select.jspÀÔ´Ï´Ù
-<jsp:useBean id="dao" class="emart.emartDao" />
+	function allSelete(obj) {
+		//chkobj ë°©4ê°œì§œë¦¬ ë°°ì—´ì´ ëœë‹¤.
+		var chkobj = document.getElementsByName("rowcheck");
+		var rowcnt = chkobj.length;
+		//alert(obj.checked);
+		
+		//objì˜ ì²´í¬ìƒíƒœ í™•ì¸
+		if (obj.checked) { //allcheck ì„ íƒë¬ì„ë•Œ
+			for (var i = 0; i < rowcnt; i++) {
+				chkobj[i].checked = true;
+			}
+		} else {//allcheckê°€ í•´ì œë¬ì„ë•Œ
+			for (var i = 0; i < rowcnt; i++) {
+				chkobj[i].checked = false;
+			}
+		}
+
+	}
+	function selectDelete() {
+		var flag = false
+		var chkobj = document.getElementsByName("rowcheck");
+		alert(chkobj);
+		for (var i = 0; i < chkobj.length; i++) {
+			if (chkobj[i].checked) {
+				flag = true;
+			}
+		}
+		if (!flag) {
+			alert("ì‚­ì œí•  ì‚¬ìš©ì í•˜ë‚˜ë¼ê³  ì²´í¬í•˜ì„¸ìš”");
+			return;
+		}
+		document.myform.submit();
+
+	}
+</script>
+select.jspì…ë‹ˆë‹¤
+<jsp:useBean id="dao" class="emart.EmartDao"></jsp:useBean>
 <%
-ArrayList<EmartBean> lists = dao.getAllEmart(); 
+	ArrayList<EmartBean> lists = dao.getAllEmart();
 %>
-<form name="myform"> 
-<input type="button" value="»èÁ¦" onClick="selectDelete()"> 
-<input type="button" value="Ãß°¡" onClick="insert()">
-<table border="1">
-	<tr>
-		<th><input type="checkbox" name="allcheck" 
-		onClick="allDelete(this)"></th>
-		<th>¹øÈ£</th>
-		<th>¾ÆÀÌµğ</th>
-		<th>ºñ¹Ğ¹øÈ£</th>
-		<th>»óÇ°</th>
-		<th>½Ã°£´ë</th>
-		<th>°áÀç</th>
-		<th>µ¿ÀÇ</th>
-		<th>¼öÁ¤</th>
-		<th>»èÁ¦</th>
+<form name="myform" action="deleteAll.jsp">
+	<input type="button" value="ì‚­ì œ" onClick="selectDelete()"> 
+	<input type="button" value="ì¶”ê°€" onClick="insert()">
+	<table border="1">
+		<tr>
+			<th><input type="checkbox" name="allcheck"
+				onClick="allSelete(this)"></th>
+			<th>ë²ˆí˜¸</th>  
+			<th>ì•„ì´ë””</th>
+			<th>ë¹„ë°€ë²ˆí˜¸</th>
+			<th>ìƒí’ˆ</th>
+			<th>ì‹œê°„ëŒ€</th>
+			<th>ê²°ì¬</th>
+			<th>ë™ì˜</th>
+			<th>ìˆ˜ì •</th>
+			<th>ì‚­ì œ</th>
 
 
-	</tr>
-	<%
-for( EmartBean bean : lists){
+		</tr>
+		<%
+			for (EmartBean bean : lists) {
 		%>
-	<tr>
-		<td></td>
-		<td><%=bean.getNo() %></td>
-		<td><%=bean.getId() %></td>
-		<td><%=bean.getPw() %></td>
-		<td><%=bean.getProduct() %></td>
-		<td><%=bean.getTime() %></td>
-		<td><%=bean.getApprove() %></td>
-		<td><%=bean.getAgree() %></td>
-		<td>¼öÁ¤</td>
-		<td>»èÁ¦</td>
+		<tr>
+			<td><input type="checkbox" name="rowcheck"
+				onClick="selectCheck()" value="<%=bean.getNo()%>"></td>
+			<td><%=bean.getNo()%></td>
+			<td><%=bean.getId()%></td>
+			<td><%=bean.getPw()%></td>
+			<td><%=bean.getProduct()%></td>
+			<td><%=bean.getTime()%></td>
+			<td><%=bean.getApprove()%></td>
+			<td><%=bean.getAgree()%></td>
+			<td><a href="updateForm.jsp?no=<%=bean.getNo()%>">ìˆ˜ì •</a></td>
+			<td><a href="deleteProc.jsp?no=<%=bean.getNo()%>">ì‚­ì œ</a></td>
 
-	</tr>
-	<%
+		</tr>
+		<%
 	}
 %>
-</table>
+	</table>
 </form>

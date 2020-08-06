@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class EmpleDao {
 	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	String url = "jdbc:oracle:thin:@localhost:1521:orcl";
 	String dbid="jspid";
 	String dbpw="jsppw";
 	Connection conn = null;
@@ -235,6 +235,7 @@ public class EmpleDao {
 		return cnt;
 		
 	}
+	
 }
 
 

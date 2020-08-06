@@ -27,22 +27,22 @@ function check(){
 		alert("pw누락");
 		return false;
 	}
-	if($('input[name=product]:checked').length==0){
+/* 	if($('input[name=product]:checked').length==0){
 		alert("구매상품을 선택해주세요");
 		return false;
-	} 
+	}  */
 	if($('select option:selected').val()=="선택"){
 		alert("배송시간을 선택해주새요");
 		return false;
 	}
-	if(!$('input[name=approve]').is(":checked")){
+/* 	if(!$('input[name=approve]').is(":checked")){
 		alert("결재 방법을 선택해주세요");
 		return false;
-	}
-	if(!$('#agree').is(":checked")){
+	} */
+/* 	if(!$('#agree').is(":checked")){
 		alert("동의해주세요");
 		return false;
-	}
+	} */
 	
 
 }

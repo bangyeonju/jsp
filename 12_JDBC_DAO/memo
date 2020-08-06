@@ -1,0 +1,34 @@
+drop table book;
+create table book(
+num number primary key,
+title varchar2(20) not null,
+author varchar2(20) not null,
+publisher varchar2(20) not null,
+price number not null,
+buy date default sysdate,
+kind varchar2(20) not null,
+bookstore varchar2(30) not null,
+count number not null);
+
+create sequence b_seq
+increment by 1
+start with 1
+minvalue 1 
+maxvalue 1000
+nocache;
+
+insert into book values(b_seq.nextval,'해리포터','조앤케이롤링','문학',5000,'2020-0806','무료','교보문고',4);
+
+
+commit;
+
+
+col num for 99
+col title for a10
+col author for a15
+col publisher for a8
+col kind for a8
+col bookstore for a10
+col count for 99
+col price for 9999
+select * from book;

@@ -32,7 +32,7 @@ request.setCharacterEncoding("UTF-8");
 	}else if(bean.getAgree().equals("on")){
 		bean.setAgree("동의");
 	}
-	int cnt = dao.insertData(bean); 
+	int cnt = dao.updateData(bean); 
 	
 	if(cnt == 1){
 		msg = "삽입성공";

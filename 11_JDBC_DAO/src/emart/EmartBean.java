@@ -9,6 +9,11 @@ public class EmartBean {
 	private String approve;
 	private String agree;
 	
+	public EmartBean() {
+		super();
+	}
+	
+	
 	public EmartBean(int no, String id, String pw, String product, String time, String approve, String agree) {
 		super();
 		this.no = no;
