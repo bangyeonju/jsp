@@ -13,15 +13,41 @@ function insert(){
 	location.href = "insertForm.jsp"
 }
 function selectDelete(){
-	
+	var chkobj=document.getElementsByName("row");
+	var flag= false;
+	for(var i=0;i<chkobj.length;i++){
+		if(chkobj[i].checked){
+			flag = true;
+		}
+	}
+	if(!flag){
+		alert("삭제할번호를 체크하세요");
+		return;
+	}
+	document.myform.submit();	
+}
+function allDelete(obj){
+	alert(obj.checked)
+	var chkobj= document.getElementsByName("row");
+	if(obj.checked){
+		for(var i=0;i<chkobj.length;i++){
+			chkobj[i].checked =true;
+		}
+	}
+	else
+	{
+		for(var i=0;i<chkobj.length;i++){
+			chkobj[i].checked =false;
+		}
+}
 }
 </script>
-<form name="myform">
+<form  action="deleteAll.jsp" name="myform">
 <input type="button" value="삭제" onClick="selectDelete()"/>
 <input type="button" value="추가" onClick="insert()">
 <table border="1">
 <tr>
-	<th><input type="checkbox" name="selectCheck"></th>
+	<th><input type="checkbox" name="allcheck" onClick="allDelete(this);"></th>
 	<th>번호</th>
 	<th>제목</th>
 	<th>저자</th>
@@ -38,7 +64,7 @@ function selectDelete(){
 for(BookBean bb : bean){
 %>
 <tr>
-<td></td>
+<td><input type="checkbox" name="row"></td>
 <td><%=bb.getNum() %></td>
 <td><%=bb.getTitle() %></td>
 <td><%=bb.getAuthor() %></td>
@@ -48,7 +74,7 @@ for(BookBean bb : bean){
 <td><%=bb.getKind()%></td>
 <td><%=bb.getBookstore() %></td>
 <td><%=bb.getCount() %></td>
-<td>수정</td>
+<td><a href="updateForm.jsp?num=<%=bb.getNum() %>">수정</a></td>
 <td><a href="deleteProc.jsp?num=<%=bb.getNum()%>">삭제</a></td>
 </tr>
 <% 

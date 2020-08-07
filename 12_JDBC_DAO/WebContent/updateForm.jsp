@@ -4,6 +4,7 @@
 	String[] kind = {"유료","무료"};
 	String[] bookstore = {"교보문고","알라딘","yes24","인터파크"};
 %>
+updateForm.jsp
 <html>
 <head>
 
@@ -11,7 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>도서 정보 입력</h1>
+	<h1>도서 수정 입력</h1>
 	<form name="myform" action="insertProc.jsp" method="post">
 		<table border=1>
 			<tr>
@@ -68,8 +69,8 @@
 						<option value="3">3</option>
 						<option value="4">4</option>
 						<option value="5">5</option> -->
-						<%for(int i=1;i<=5;i++) {%>
-						<option value=<%=i %>><%= i%></option>
+						<%for(int i=1;i<=5;i++) {%> 
+						<option value=<%=i %><% if(bean.getCount() ==i)%>><%= i%></option>
 						<%} %>
 					</select>
 				</td>
