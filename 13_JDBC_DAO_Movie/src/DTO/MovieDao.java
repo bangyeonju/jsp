@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class MovieDao {
 	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+	String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	String user = "jspid";
 	String pw = "jsppw";
 
@@ -143,17 +143,17 @@ public class MovieDao {
 	  }
 	  public int deleteAll(String[] str) {
 		  getConnection();
-		  int cnt =-1;
 		  String sql="delete from movie where num=? ";
 		  for(int i=0;i<str.length-1;i++) {
 		  sql += " or num=?";
 		  }
+		  int cnt =-1;
 		  try {
 			ps= conn.prepareStatement(sql);
 			for(int i = 1;i<=str.length;i++) {
 				ps.setInt(i, Integer.parseInt(str[i-1]));
 			}
-			ps.executeUpdate();
+			cnt=ps.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

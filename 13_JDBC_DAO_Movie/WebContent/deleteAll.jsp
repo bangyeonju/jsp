@@ -13,4 +13,6 @@ int cnt = dao.deleteAll(str);
 if(cnt>0){
 	response.sendRedirect("select.jsp");
 }
+
+
 %>

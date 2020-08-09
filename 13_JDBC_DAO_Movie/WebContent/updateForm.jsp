@@ -6,11 +6,11 @@ updateForm.jsp<br><br>
 <jsp:useBean id="dao" class="DTO.MovieDao"/>
   <% 
 	int num = Integer.parseInt(request.getParameter("num"));
-   	MovieBean bean = dao.getMovieByNum(num);
+   	MovieBean movie = dao.getMovieByNum(num);
     String[] genre={"공포","다큐","액션","애니메이션"};
     String[] time={"08~10","10~12","12~14","14~16","16~18","18~20"};
     String[] partner={"1","2","3","4"};
-  		  
+  	System.out.print(movie.getPartner());
   %>
 	<h2>영화 선호도 조사 </h2>
 	<form action="updateProc.jsp" method="post">
@@ -18,17 +18,17 @@ updateForm.jsp<br><br>
 		<tr>
 			<td>아이디</td>
 			<td>
-				<input type="hidden" name="num" value="<%=bean.getNum()%>">
-				<input type="text" name="id" value="<%=bean.getId()%>">
+				<input type="hidden" name="num" value="<%=movie.getNum()%>">
+				<input type="text" name="id" value="<%=movie.getId()%>">
 			</td>  
 		</tr>
 		<tr>
 			<td>이름</td>
-			<td><input type="text" name="name" value="<%=bean.getName()%>"></td> 
+			<td><input type="text" name="name" value="<%=movie.getName()%>"></td> 
 		</tr> 
 		<tr>
 			<td>나이</td>
-			<td><input type="text" name="age" value="23"></td> 
+			<td><input type="text" name="age" value="<%=movie.getAge()%>"></td> 
 		</tr>
 		<tr>
 			<td>좋아하는 장르</td>
@@ -38,7 +38,7 @@ updateForm.jsp<br><br>
 				<input type="checkbox" name="genre" value="액션">액션 
 				<input type="checkbox" name="genre" value="애니메이션">애니메이션 -->
 				<%for(int i=0;i<genre.length;i++){ %>
-				<input type="checkbox" name="genre" value="<%=genre[i] %>"><%=genre[i] %>
+				<input type="checkbox" name="genre" value="<%=genre[i]%>" <%if(movie.getGenre().contains(genre[i])){%>checked<% } %>> <%=genre[i]%>
 				<%} %>
 			</td>
 			
@@ -55,7 +55,7 @@ updateForm.jsp<br><br>
 					<option value="16~18">16~18</option>
 					<option value="18~20">18~20</option> -->
 					<%for(int i=0;i<time.length;i++){ %>
-					<option value="<%=time[i] %>"><%=time[i] %>
+					<option value="<%=time[i] %>" <%if(movie.getTime().contains(time[i])){%> selected<% } %>><%=time[i] %>
 					<%} %>
 				</select>
 			</td> 
@@ -69,8 +69,10 @@ updateForm.jsp<br><br>
 				<input type="radio" name="partner" value="3">3 
 				<input type="radio" name="partner" value="4">4  -->
 				<%for (int i=0;i<partner.length;i++){ %>
-				<%=partner[i] %><input type="radio" name="partner" value="<%=partner[i] %>">
-				<%} %>
+				<%=partner[i] %><input type="radio" name="partner" value="<%=partner[i] %>" <% if() {%> checked<% } %>>
+				<%
+				}
+				%>
 			</td>
 		</tr>
 		

@@ -8,7 +8,7 @@ import java.util.Vector;
 
 public class MovieDao {
 	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+	String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	String dbid="jspid";
 	String dbpw="jsppw";
 	Connection conn = null;
@@ -204,7 +204,7 @@ public class MovieDao {
 	
 	public int deleteCheckData(String[] check){ 
 		PreparedStatement pstmt = null;
-		System.out.println("Ã¼Å©µÈ °³¼ö:"+check.length);
+		System.out.println("Ã¼Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½:"+check.length);
 		
 		for(int i=0;i<check.length;i++){
 			System.out.println(check[i]);

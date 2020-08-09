@@ -23,6 +23,7 @@ bean.setGenre(str);
 
 	
 	int cnt = dao.insertData(bean);
+	System.out.println(cnt);
 	if(cnt == -1){
 		response.sendRedirect("insertForm.jsp");
 	} else{
