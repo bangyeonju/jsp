@@ -1,9 +1,13 @@
+<%@page import="myPkg.MovieDao"%>
 <%@ page import="java.util.*,myPkg.MovieBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<jsp:useBean id="dao" class="myPkg.MovieDao" />
+<%-- <jsp:useBean id="dao" class="myPkg.MovieDao" /> --%>
 <%
+MovieDao dao = MovieDao.getInstance();
+System.out.println("select.jsp"+dao);
+	System.out.println("select:"+dao);
 	request.setCharacterEncoding("UTF-8");
 
 	Vector<MovieBean> movies = dao.getAllMovies();

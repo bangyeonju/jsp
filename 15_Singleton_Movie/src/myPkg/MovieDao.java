@@ -12,7 +12,16 @@ public class MovieDao {
 	String dbid="jspid";
 	String dbpw="jsppw";
 	Connection conn = null;
-
+	
+	private static MovieDao dao; //기본값이 null
+	
+	public static MovieDao getInstance() {
+		if(dao==null) {
+			dao = new MovieDao();
+		}
+		return dao;
+	}
+	
 	public MovieDao() {
 
 		try{
@@ -62,8 +71,8 @@ public class MovieDao {
 					rs.close();
 				if(pstmt!=null)
 					pstmt.close();
-				if(conn!=null)
-					conn.close();
+//				if(conn!=null)
+//					conn.close();
 			}catch(SQLException e){
 				e.printStackTrace();
 			}
@@ -95,8 +104,9 @@ public class MovieDao {
 			try{
 				if(pstmt!=null)
 					pstmt.close();
-				if(conn!=null)
-					conn.close();
+				/*
+				 * if(conn!=null) conn.close();
+				 */
 			}catch(Exception e2){
 				e2.printStackTrace();
 			}
@@ -134,8 +144,9 @@ public class MovieDao {
 					rs.close();
 				if(pstmt!=null)
 					pstmt.close();
-				if(conn!=null)
-					conn.close();
+				/*
+				 * if(conn!=null) conn.close();
+				 */
 			}catch(SQLException e){
 				e.printStackTrace();
 			}
@@ -169,8 +180,9 @@ public class MovieDao {
 			try{
 				if(pstmt!=null)
 					pstmt.close();
-				if(conn!=null)
-					conn.close();
+				/*
+				 * if(conn!=null) conn.close();
+				 */
 			}catch(Exception e2){
 				e2.printStackTrace();
 			}
@@ -193,8 +205,9 @@ public class MovieDao {
 			try{
 				if(pstmt!=null)
 					pstmt.close();
-				if(conn!=null)
-					conn.close();
+				/*
+				 * if(conn!=null) conn.close();
+				 */
 			}catch(SQLException e){
 				e.printStackTrace();
 			}
@@ -227,8 +240,9 @@ public class MovieDao {
 			try{
 				if(pstmt!=null)
 					pstmt.close();
-				if(conn!=null)
-					conn.close();
+				/*
+				 * if(conn!=null) conn.close();
+				 */
 			}catch(SQLException e){
 				e.printStackTrace();
 			}
@@ -261,8 +275,9 @@ public class MovieDao {
 					rs.close();
 				if(pstmt!=null)
 					pstmt.close();
-				if(conn!=null)
-					conn.close();
+				/*
+				 * if(conn!=null) conn.close();
+				 */
 			}catch(SQLException e){
 				e.printStackTrace();
 			}
