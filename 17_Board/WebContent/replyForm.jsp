@@ -2,8 +2,15 @@
     pageEncoding="UTF-8"%>
 <%@ include file="color.jsp" %>
 <!-- <link href="style.css" rel="stylesheet" type="text/css">    -->
-writeForm.jsp<br>
+content.jsp -> replyForm.jsp -> replyPro.jsp<br>
+<%
+	//content.jsp에서ref,re_step,re_level를 받는다.
+	int ref = Integer.parseInt(request.getParameter("ref"));
+	int re_step = Integer.parseInt(request.getParameter("re_step"));
+	int re_level = Integer.parseInt(request.getParameter("re_level"));
 
+
+%>
 <style type="text/css">
    table{
       margin: 0 auto;
@@ -16,12 +23,18 @@ writeForm.jsp<br>
 
 </style>
 <script type="text/javascript" src="./js/jquery.js"></script>
-<script type="text/javascript" src="script.js"> /* 유혀ㅛ성검사 */
+<script type="text/javascript" src="script.js"> /* 유효성검사 */
 
 </script>
+
 <b>글쓰기</b>
 <body bgcolor="<%=bodyback_c%>">
-<form method="post" name="writeform" action="writePro.jsp" onsubmit="return writeSave()"> <!-- form 에서 쓸데는 onsubmit="return writeSave()"  -->
+<form method="post" name="writeform" action="replyPro.jsp" onsubmit="return writeSave()"> <!-- form 에서 쓸데는 onsubmit="return writeSave()"  -->
+   <input type="hidden" name="ref" value=<%=ref %>>   	
+   <input type="hidden" name="re_step" value=<%=re_step %>>   	
+   <input type="hidden" name="re_level" value=<%=re_level %>>   	
+   
+   
    <table border=1 width="450" align="center" cellspacing="0">
       <tr>
          <td colspan="2" align="right" bgcolor="<%=value_c%>"><a href="list.jsp">글목록</a></td>
@@ -32,7 +45,7 @@ writeForm.jsp<br>
       </tr>
       <tr>
          <td width="100" align="center" bgcolor="<%=value_c%>">제 목</td>
-         <td width="350" align="left"><input type="text" name="subject" size="50" maxlength="50" value="어떤글"></td>
+         <td width="350" align="left"><input type="text" name="subject" size="50" maxlength="50" value="[답글]"></td>
       </tr>
       <tr>
          <td width="100" align="center" bgcolor="<%=value_c%>">Email</td>

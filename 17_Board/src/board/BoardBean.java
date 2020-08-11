@@ -17,8 +17,9 @@ public class BoardBean {
 	private String ip;
 	
 	
-	
-	
+	public BoardBean() {
+		
+	}
 	public BoardBean(int num, String writer, String email, String subject, String passwd, Timestamp reg_date,
 			int readcount, int ref, int re_step, int re_level, String content, String ip) {
 		super();
@@ -35,6 +36,7 @@ public class BoardBean {
 		this.content = content;
 		this.ip = ip;
 	}
+
 	public int getNum() {
 		return num;
 	}

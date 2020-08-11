@@ -51,6 +51,7 @@ list.jsp
 		<tr>
 			<td align="right" bgcolor="<%=value_c%>"><a href="writeForm.jsp">글쓰기</a>
 			</td>
+		</tr>
 	</table>
 
 	<%
@@ -82,7 +83,32 @@ list.jsp
 
 		<tr>
 			<td align="center"><%=number--%></td>
-			<td align="left"><%=article.getSubject()%></td>
+			<td align="left">
+			<%
+				int wid=0;
+			
+				if(article.getRe_level()>0){//답글
+					wid=article.getRe_level() *20;
+					%>
+					<img src="images/level.gif" width="<%=wid%>" height="16">
+					<img src="images/re.gif">
+					<% 
+				} else{ //원글
+					%>
+					<img src="images/level.gif" width="<%=wid%>" height="16">
+					<%
+				}
+				
+			%>
+			<a href="content.jsp?num=<%=article.getNum()%>&pageNum=<%=currentPage %>"><%=article.getSubject()%></a>
+			<% 
+			if(article.getReadcount() >10){
+				%>
+				<img src="images/hot.gif">
+				<% 
+			}
+			%>
+			</td>
 			<td align="center"><%=article.getWriter()%></td>
 			<td align="center"><%=article.getReg_date()%></td>
 			<td align="center"><%=article.getReadcount()%></td>
@@ -134,12 +160,17 @@ list.jsp
 
 
 
+<!-- insert할때 - ip주소 4자리로 삽입하기
+
+Servers-Tomcat v.90-마우스오른쪽-stop선택
+[Run]-[Run Configurations]-[Apahce Tomcat]-[아래화살표 ]-[Tomcat v9.0 Server at]
+-[Argument]-[VM Arguments 마지막줄에 추가입력]:  Djava.net.preferIPv4Stack=true
+-[apply]-[run] -->
 
 
 
 
-
-
+<!-- re_level:답글 -->
 
 
 

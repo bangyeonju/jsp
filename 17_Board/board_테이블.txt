@@ -2,16 +2,16 @@ drop table board;
 
 create table board( 
 	num number not null primary key,
-	writer varchar2(10) not null,
-	email varchar2(10),
-	subject varchar2(20) not null,
+	writer varchar2(30) not null,
+	email varchar2(30),
+	subject varchar2(30) not null,
 	passwd varchar2(12) not null,
 	reg_date date not null,
 	readcount int default 0,
 	ref number not null,
 	re_step number not null,
 	re_level number not null,
-	content varchar2(20) not null,
+	content varchar2(50) not null,
 	ip varchar2(15) not null
 );
 
