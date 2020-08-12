@@ -29,7 +29,7 @@ table {
 	int num = Integer.parseInt(request.getParameter("num"));
 	int pageNum = Integer.parseInt(request.getParameter("pageNum"));
 	%>
-	<form method="post" name="delform" action="deletePro.jsp"  onsubmit="return deleteSave()">
+	<form method="post" name="delform" action="deletePro.jsp?pageNum=<%=pageNum %>"  onsubmit="return deleteSave()">
 		<table align="center" border="1" width="450">
 			<tr height="30">
 				<td align="center" bgcolor="<%=value_c%>">비밀번호를 입력해 주세여</td>

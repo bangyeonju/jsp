@@ -5,8 +5,8 @@
 
  %>
 deleteProc.jsp
-<jsp:useBean id="dao" class="DTO.MovieDao"/>
-<jsp:useBean id="bean" class="DTO.MovieBean"/>
+<jsp:useBean id="dao" class="my.MovieDao"/>
+<jsp:useBean id="bean" class="my.MovieBean"/>
 
 <%
 int num = Integer.parseInt(request.getParameter("num"));

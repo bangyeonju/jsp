@@ -1,5 +1,6 @@
 package board;
 
+import java.io.Writer;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -299,8 +300,91 @@ public int replyArticle(BoardBean article) {
 		return cnt;
 		
 	}
-	
-	
+	public BoardBean updateGetArticle(int num) {
+		getConnection();
+		String sql="select * from board where num = ?";
+		BoardBean article=null;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, num);
+			rs=ps.executeQuery();
+			while(rs.next()) {
+				
+				  article = new BoardBean();
+	                article.setNum(rs.getInt("num"));
+	                article.setWriter(rs.getString("writer"));
+	                article.setEmail(rs.getString("email"));
+	                article.setSubject(rs.getString("subject"));
+	                article.setPasswd(rs.getString("passwd"));
+	                article.setReg_date(rs.getTimestamp("reg_date"));
+	                article.setReadcount(rs.getInt("readcount"));
+	                article.setRef(rs.getInt("ref"));
+	                article.setRe_step(rs.getInt("re_step"));
+	                article.setRe_level(rs.getInt("re_level"));
+	                article.setContent(rs.getString("content"));
+	                article.setIp(rs.getString("ip"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (conn != null) {
+					conn.close();
+				}
+				if (ps != null) {
+					ps.close();
+				}
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (Exception e2) {
+			}
+		}
+		
+		
+		return article;
+	}
+	public int updateArticle(BoardBean bean) {
+		getConnection();
+		int cnt =-1;
+		String sql="select passwd from board where num=?";
+		String sql_update="update board set writer=?,email=?,subject=?,content=? where num=?";
+		try {
+			ps= conn.prepareStatement(sql);
+			ps.setInt(1, bean.getNum());
+			rs= ps.executeQuery();
+			if(rs.next()) {
+				String dbpasswd= rs.getString("passwd");//dbpasswd =updateForm에서 입력한 pw
+				if(dbpasswd.equals(bean.getPasswd())) {
+					ps=conn.prepareStatement(sql_update);
+					ps.setString(1,bean.getWriter());
+					ps.setString(2, bean.getEmail());
+					ps.setString(3, bean.getSubject());
+					ps.setString(4, bean.getContent());
+					ps.setInt(5, bean.getNum());
+					
+					cnt = ps.executeUpdate();
+				}
+			}
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				if(conn!=null) {
+					conn.close();
+				}
+				if(ps!=null) {
+					ps.close();
+				}
+			}catch (Exception e) {
+			}
+		}
+		return cnt;
+				
+	}
 	
 	
 }

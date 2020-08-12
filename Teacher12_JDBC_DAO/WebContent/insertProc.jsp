@@ -8,8 +8,8 @@ insertProc.jsp<br><br>
 %>
 
 <!-- DTO.BookBean bean = new DTO.BookBean(); -->
-<jsp:useBean id="dao" class="DTO.BookDao"/>
-<jsp:useBean id="bean" class="DTO.BookBean"/>
+<jsp:useBean id="dao" class="my.BookDao"/>
+<jsp:useBean id="bean" class="my.BookBean"/>
 <jsp:setProperty property="*" name="bean"/>
 
 

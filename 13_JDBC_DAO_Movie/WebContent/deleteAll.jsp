@@ -3,7 +3,7 @@
   <%
  request.setCharacterEncoding("UTF-8");
  %>
-<jsp:useBean id="dao" class="DTO.MovieDao"/>
+<jsp:useBean id="dao" class="my.MovieDao"/>
 deleteAll.jsp
 
 <%

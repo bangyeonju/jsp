@@ -1,4 +1,4 @@
-<%@page import="DTO.BookBean"%>
+<%@page import="my.BookBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -42,7 +42,7 @@
 	}
 </script>    
 select.jsp<br><br>
-<jsp:useBean id="dao" class="DTO.BookDao"/>
+<jsp:useBean id="dao" class="my.BookDao"/>
 
 <%
 	ArrayList<BookBean> lists = dao.getAllBooks();

@@ -9,7 +9,7 @@ String[] group= request.getParameter("group");
 String song= request.getParameter("song"); 
 */
 %>
-<jsp:useBean id="bean" class="DTO.inputBean"></jsp:useBean>
+<jsp:useBean id="bean" class="my.inputBean"></jsp:useBean>
 <jsp:setProperty property="*" name="bean"/>
 이름:<jsp:getProperty property="name" name="bean"/>
 점수:<% 

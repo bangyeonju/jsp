@@ -153,7 +153,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="Teacher13_JDBC_DAO_Movie" path="/13_JDBC_DAO_Movie" reloadable="true" source="org.eclipse.jst.jee.server:Teacher13_JDBC_DAO_Movie"/><Context docBase="15_Singleton_Movie" path="/15_Singleton_Movie" reloadable="true" source="org.eclipse.jst.jee.server:15_Singleton_Movie"/><Context docBase="16_DBCP" path="/16_DBCP" reloadable="true" source="org.eclipse.jst.jee.server:16_DBCP"/><Context docBase="17_Board" path="/17_Board" reloadable="true" source="org.eclipse.jst.jee.server:17_Board"/></Host>
+      <Context docBase="Teacher13_JDBC_DAO_Movie" path="/13_JDBC_DAO_Movie" reloadable="true" source="org.eclipse.jst.jee.server:Teacher13_JDBC_DAO_Movie"/><Context docBase="15_Singleton_Movie" path="/15_Singleton_Movie" reloadable="true" source="org.eclipse.jst.jee.server:15_Singleton_Movie"/><Context docBase="16_DBCP" path="/16_DBCP" reloadable="true" source="org.eclipse.jst.jee.server:16_DBCP"/><Context docBase="17_Board" path="/17_Board" reloadable="true" source="org.eclipse.jst.jee.server:17_Board"/><Context docBase="18_UPload" path="/18_UPload" reloadable="true" source="org.eclipse.jst.jee.server:18_UPload"/><Context docBase="Minimall" path="/Minimall" reloadable="true" source="org.eclipse.jst.jee.server:Minimall"/></Host>
     </Engine>
   </Service>
 </Server>

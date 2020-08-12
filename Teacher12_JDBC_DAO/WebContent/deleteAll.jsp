@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 deleteAll.jsp<br><br>
-<jsp:useBean id="dao" class="DTO.BookDao"/>
+<jsp:useBean id="dao" class="my.BookDao"/>
 <%
 	String[] str = request.getParameterValues("rowcheck"); 
 	/* for(){

@@ -67,7 +67,7 @@ content.jsp
 	<tr>
 		<td colspan="4" width="125" align="right" bgcolor="<%=value_c %>"
 			height="40">
-			<input type="button" value="글수정"> &nbsp;
+			<input type="button" value="글수정" onClick="location='updateForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pn%>'"> &nbsp;
 			<input type="button" value="글삭제" onClick="location='deleteForm.jsp?num=<%=article.getNum()%>&pageNum=<%=pn%>'"> &nbsp; 
 			<input type="button"value="답글쓰기" onClick="location='replyForm.jsp?ref=<%=ref%>&re_step=<%=re_step%>&re_level=<%=re_level%>'"> &nbsp; 
 			<input type="button" value="글목록" onClick="location='list.jsp?pageNum=<%=pn%>'">&nbsp;

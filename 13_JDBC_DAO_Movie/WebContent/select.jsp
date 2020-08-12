@@ -1,9 +1,9 @@
 
-<%@page import="DTO.MovieBean"%>
+<%@page import="my.MovieBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:useBean id="dao" class="DTO.MovieDao" />
+<jsp:useBean id="dao" class="my.MovieDao" />
 <%
 	request.setCharacterEncoding("UTF-8");
 %>

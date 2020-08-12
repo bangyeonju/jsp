@@ -5,7 +5,7 @@
 %>
 
 <!-- DTOCheckboxBean bean = new DTO.CheckboxBean(); -->
-<jsp:useBean id="bean" class="DTO.CheckboxBean"></jsp:useBean>
+<jsp:useBean id="bean" class="my.CheckboxBean"></jsp:useBean>
 <jsp:setProperty property="name" name="bean" />
 <jsp:setProperty property="fruit" name="bean" />
 <!-- fruit를 배열로 해서 그냥 넘길수가있당.!!!!-->

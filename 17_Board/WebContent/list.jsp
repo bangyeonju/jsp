@@ -26,11 +26,11 @@ list.jsp
 	if (pageNum == null) {
 		pageNum = "1";
 	}
-	int currentPage = Integer.parseInt(pageNum);//지금보고있는페이지
+	int currentPage = Integer.parseInt(pageNum);//지금보고있는페이지 (pageNum=currentPage 같다 문자를 숫자형으로 바까준거)
 	int startRow = (currentPage - 1) * pageSize + 1;//내가 클릭한 페이지에 몇번부터 몇번까지 나오게할까????11
 	int endRow = currentPage * pageSize;//20
 	int count = 0;
-	int number = 0;
+	int number = 0;//리스트에 보이는 글번호..
 
 	ArrayList<BoardBean> lists = null;
 
@@ -148,7 +148,10 @@ list.jsp
 				<a href="list.jsp?pageNum=<%=startPage+10 %>">[다음]</a>
 				<%
 			}
-		}
+			
+			
+			
+		} 
 	%>
 </body>
 

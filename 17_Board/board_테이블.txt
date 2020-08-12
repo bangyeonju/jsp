@@ -86,7 +86,7 @@ commit;
          4          4 a22                 2          1          1
          5          5 a221                2          3          2
          6          6 a222                2          2          2
-         7          7 a3                  6          0          0
+         7          7 a3                  7          0          0
          8          8 a31                 6          6          1
          9          9 a311                6          7          2
         10         10 a32                 6          2          1
@@ -97,7 +97,7 @@ commit;
 
 
 SQL> select rownum,num,subject,ref,re_step,re_level from board
-  2  order by ref desc, re_step asc;
+ order by ref desc, re_step asc;
 
     ROWNUM        NUM SUBJECT           REF    RE_STEP   RE_LEVEL
 ---------- ---------- ---------- ---------- ---------- ----------
