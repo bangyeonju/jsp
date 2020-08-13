@@ -9,11 +9,11 @@ main.jsp
 <table border="1">
 <tr>
 <td width="50" height="50" align="center" bgcolor="yellow">아이디</td>
-<td><input type="text" name="id"></td>
+<td><input type="text" name="id" value="admin"></td>
 </tr>
 <tr>
 <td width="50" height="50" align="center" bgcolor="yellow">비번</td>
-<td><input type="password" name="passwd" value="1234"></td>
+<td><input type="password" name="password" value="1234"></td>
 </tr>
 <tr>
 <td colspan="2" bgcolor="#FFCC00">

@@ -25,7 +25,7 @@ myshop\member\register.jsp <br><br>
 	</tr>
 	<tr>
 		<th bgcolor="yellow" align="center"> * 비밀 번호 확인</th>
-		<td><input type="password" name="repassword" id="repassword" onkeyup="passwd_keyup()">
+		<td><input type="password" name="repassword" id="repassword" onkeyup="passwd_keyup()"><!-- onkeyup:키가 눌렀다가 땔때 호출된다. -->
 			<span id="pwmessage" style="display:none;"></span></td>
 	</tr>
 	<tr>
@@ -46,9 +46,9 @@ myshop\member\register.jsp <br><br>
 	<tr>
 		<th bgcolor="yellow" align="center">주민 등록 번호</th>
 		<td>
-			<input type="text" name="ssn1" maxlength="6" size="6" value="123456">
+			<input type="text" name="rrn1" maxlength="6" size="6" value="123456">
 			- 
-			<input type="text" name="ssn2" maxlength="7" size="7" value="1234567">
+			<input type="text" name="rrn2" maxlength="7" size="7" value="1234567">
 		</td>				
 	</tr>
 	<tr>

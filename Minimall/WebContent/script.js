@@ -34,6 +34,11 @@ function writeSave(){
       $('input[name=password]').focus();
       return false;
    }
+   if(pwsame=='비번불일치'){
+		alert('비번불일치');
+		return false; 
+		
+	}
    
    
 }//writeSave
@@ -68,9 +73,37 @@ function duplicate(){
 			}
 			
 		});//ajax
-		
-		
 	
+}//duplicate
+
+
+function passwd_keyup(){
+//	alert(2);
+	if($('input[name=password]').val() == $('input[name=repassword]').val()){
+		$('#pwmessage').html('<font color=blue>사용가능합니다.</font>');
+		$('#pwmessage').show();
+		pwsame="비번일치";
+	}else {
+		$('#pwmessage').html('<font color=red>비밀번호가 다릅니다..</font>');
+		$('#pwmessage').show();
+		pwsame="비번불일치";
+	}
 	
-	
-}
+
+}//passwd_keyup
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -36,7 +36,7 @@ col id for a12
 col password for a12
 col rrn1 for a10
 col rrn2 for a10
-select no, name, id, password, rrn1, rrn2 from members ;
+select no, name, id, password, rrn1, rrn2 from members order by no ;
 
 
 -- 카테고리 테이블
@@ -57,7 +57,9 @@ create table category(
 	code 	varchar2(20) not null,
 	cname 	varchar2(50) not null
 );
-
+col cnum for 99
+col code for a10
+col cname for a10
 
 -- 상품 테이블
 drop sequence catprod ;
