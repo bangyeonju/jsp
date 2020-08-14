@@ -55,9 +55,8 @@ prod_list.jsp
 			<td align="center"><%=pb.getPcompany() %></td>
 			<td align="center"><%=pb.getPqty() %></td>
 			<td align="center">
-			<a href="prod_update.jsp">수정</a>|
+			<a href="prod_update.jsp?pnum=<%=pb.getPnum()%>">수정</a>|
 			<a href="javascript:checkDel('<%=pb.getPnum	()%>','<%=pb.getPimage()%>')">삭제</a> 
-			
 			</td>
 			
 		</tr>

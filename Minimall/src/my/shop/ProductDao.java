@@ -142,7 +142,6 @@ public class ProductDao {
 	}
 	public ArrayList<ProductBean> productSelect(int pnum) {
 		getConnection();
-		ProductBean pb = null;
 		ArrayList<ProductBean> lists= null;
 				
 		String sql ="select * from product where pnum=?";
@@ -237,5 +236,50 @@ public class ProductDao {
 		}
 		return cnt;
 	}
+	
+	   public int updateProduct(MultipartRequest mr) {
+		      getConnection();
+		      int cnt =-1;
+		      int pnum = Integer.parseInt(mr.getParameter("pnum"));
+		      String pcompany = mr.getParameter("pcompany");
+		      String pimage = mr.getFilesystemName("pimage");
+		      int pqty = Integer.parseInt(mr.getParameter("pqty"));;
+		      int price = Integer.parseInt(mr.getParameter("price"));
+		      String pspec = mr.getParameter("pspec");
+		      String pcontents = mr.getParameter("pcontents");
+		      int point = Integer.parseInt(mr.getParameter("point"));
+		      
+		      String spl= "update product set pcompany=? ,pimage=? ,pqty=? ,price=? "
+		            + ",pspec=? ,pcontents=? ,point=? where pnum=? ";
+
+		      try {
+		         ps=conn.prepareStatement(spl);
+		         ps.setString(1, pcompany);
+		         ps.setString(2, pimage);
+		         ps.setInt(3, pqty);
+		         ps.setInt(4, price);
+		         ps.setString(5, pspec);
+		         ps.setString(6, pcontents);
+		         ps.setInt(7, point);
+		         ps.setInt(8, pnum);
+		         cnt = ps.executeUpdate();
+		         
+		      } catch (SQLException e) {
+		         e.printStackTrace();
+		      }finally {
+		         try {
+		            if(ps!=null)
+		            	ps.close();
+		            
+		            if(ps!=null)
+		            	ps.close();
+		         } catch (SQLException e) {
+		            e.printStackTrace();
+		         }
+		      }
+		      
+		      
+		      return cnt;
+		   }
 
 }
