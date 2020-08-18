@@ -1,45 +1,42 @@
-<%@page import="java.io.File"%>
 <%@page import="my.shop.ProductDao"%>
+<%@page import="java.io.File"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8");%>
 <%
 ServletContext sc = config.getServletContext();
 int maxSize=1024*1024*5;
+
 String encType="UTF-8";
 String uploadDir=sc.getRealPath("/myshop/images");
 MultipartRequest mr = new MultipartRequest(request, uploadDir, maxSize, encType, new DefaultFileRenamePolicy());
-String old_pimage=mr.getParameter("old_pimage");
-System.out.println("old_pimage"+old_pimage);//파일이름이 글자로 들어가 있당
-String pimage =mr.getFilesystemName("pimage");
-System.out.println("pimage"+pimage);
-//새로운 이미지를 올리고 삭제함..?
-File dir = new File(uploadDir);//폴더취급한다.
+String pimage2 = mr.getFilesystemName("pimage");
+System.out.println("pimage2:" + pimage2);
+String old_pimage = mr.getParameter("old_pimage");
+System.out.println("old_pimage:" + old_pimage); // 기존이미지.jpg
+File dir = new File(uploadDir);
 
-if(pimage!=null){//새로선택한게 있다면 
-	if(old_pimage!=null){//기존 이미지가 있다면 (기존이미지는 글자로 존재)
-		File delFile= new File(dir,old_pimage);
-		if(delFile.exists()){//dir에 old_pimage가 존재한가? ==> 웹서버 폴더에 존재한다면
-				//존재한다.
-				if(delFile.delete()){//dir에 old_pimage 존재하면 지워라=> true리턴
-					%>
-					<script type="text/javascript">
-						alert("이미지삭제성공");
-					</script>
-					<% 
-					}
-			
-		}
-	}
-	
-	
+if(pimage2 != null){ // 
+   if(old_pimage != null) { // 
+      File delFile = new File(dir,old_pimage);//old이미지 파일 객체로 변환
+      if(delFile.exists()){ 
+         //델파일이 존재하면 true
+         if(delFile.delete()){
+             
+%>
+<script type="text/javascript">
+               alert("이미지 화일 삭제 성공");
+            </script>
+<%               
+         }//지우는데 성공하면 블리언 트루리턴
+         
+      }
+   }
 }
-
-
 ProductDao pdao =ProductDao.getInstance();
-int cnt = pdao.updateProduct(mr);
+int cnt = pdao.updateprodu(mr);
 String msg,url="";
 if(cnt>0){
    msg="상품수정성공";

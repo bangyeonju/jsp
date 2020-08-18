@@ -24,6 +24,8 @@ if(mdto!=null) {
 		url="myshop/display/mall.jsp";
 	
 	}
+	session.setAttribute("memid", _id);//memid:admin 세션설정을 하면 원하는 페이지에서 계속해서 사용할수 있다
+	
 } else {
 	msg="가입하지 않은 회원";
 }

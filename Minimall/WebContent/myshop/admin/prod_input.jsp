@@ -72,10 +72,10 @@ prod_input.jsp
 			<tr>
 				<th class="m2">상품스펙</th>
 				<td><select name="pspec">
-						<option value="normal">::NORMAL::</option>
-						<option value="hot">HOT</option>
-						<option value="new">NEW</option>
-						<option value="best">BEST</option>
+						<option value="NORMAL">::NORMAL::</option>
+						<option value="HIT">HIT</option>
+						<option value="NEW">NEW</option>
+						<option value="BEST">BEST</option>
 				</select></td>
 
 			</tr>

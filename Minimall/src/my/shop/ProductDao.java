@@ -9,7 +9,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 
 import com.oreilly.servlet.MultipartRequest;
 
@@ -82,6 +81,7 @@ public class ProductDao {
 			Date d= new Date();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			String today = sdf.format(d);
+			System.out.println("pspec"+pspec);
 			ps.setString(10, today);
 			
 			cnt =ps.executeUpdate();
@@ -140,6 +140,8 @@ public class ProductDao {
 		}
 		return lists;
 	}
+	
+	//상세보기,수정form,상품상세보기
 	public ArrayList<ProductBean> productSelect(int pnum) {
 		getConnection();
 		ArrayList<ProductBean> lists= null;
@@ -237,49 +239,146 @@ public class ProductDao {
 		return cnt;
 	}
 	
-	   public int updateProduct(MultipartRequest mr) {
-		      getConnection();
-		      int cnt =-1;
-		      int pnum = Integer.parseInt(mr.getParameter("pnum"));
-		      String pcompany = mr.getParameter("pcompany");
-		      String pimage = mr.getFilesystemName("pimage");
-		      int pqty = Integer.parseInt(mr.getParameter("pqty"));;
-		      int price = Integer.parseInt(mr.getParameter("price"));
-		      String pspec = mr.getParameter("pspec");
-		      String pcontents = mr.getParameter("pcontents");
-		      int point = Integer.parseInt(mr.getParameter("point"));
-		      
-		      String spl= "update product set pcompany=? ,pimage=? ,pqty=? ,price=? "
-		            + ",pspec=? ,pcontents=? ,point=? where pnum=? ";
+	  public int updateProduct(MultipartRequest mr) {
+	      getConnection();
+	      int cnt =-1;
+	      String pcompany = mr.getParameter("pcompany");
+	      String pimage = mr.getFilesystemName("pimage");
+	      String old_pimage =mr.getParameter("old_pimage");
+	      if(pimage==null) {
+	    	  pimage =old_pimage;
+	      }
+	      int pqty = Integer.parseInt(mr.getParameter("pqty"));;
+	      int price = Integer.parseInt(mr.getParameter("price"));
+	      String pspec = mr.getParameter("pspec");
+	      String pcontents = mr.getParameter("pcontents");
+	      int point = Integer.parseInt(mr.getParameter("point"));
+	     int pnum= Integer.parseInt(mr.getParameter("pnum"));
+	      System.out.println(pnum);
+	      
+	      String spl= "update product set pcompany=? ,pimage=? ,pqty=? ,price=? "
+	            + ",pspec=? ,pcontents=? ,point=? where pnum=? ";
 
-		      try {
-		         ps=conn.prepareStatement(spl);
-		         ps.setString(1, pcompany);
-		         ps.setString(2, pimage);
-		         ps.setInt(3, pqty);
-		         ps.setInt(4, price);
-		         ps.setString(5, pspec);
-		         ps.setString(6, pcontents);
-		         ps.setInt(7, point);
-		         ps.setInt(8, pnum);
-		         cnt = ps.executeUpdate();
-		         
-		      } catch (SQLException e) {
-		         e.printStackTrace();
-		      }finally {
+	      try {
+	         ps=conn.prepareStatement(spl);
+	         ps.setString(1, pcompany);
+	         ps.setString(2, pimage);
+	         ps.setInt(3, pqty);
+	         ps.setInt(4, price);
+	         ps.setString(5, pspec);
+	         ps.setString(6, pcontents);
+	         ps.setInt(7, point);
+	         ps.setInt(8, pnum);
+	         cnt = ps.executeUpdate();
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      }finally {
+	         try {
+	            if(ps!=null)
+	            	ps.close();
+	            if(rs!=null)
+	               rs.close();
+	            if(conn!=null)
+	               conn.close();
+	         } catch (SQLException e) {
+	            e.printStackTrace();
+	         }
+	      }
+	      
+	      
+	      return cnt;
+	   }
+	  
+	  public int updatePimage(int pnum) {
+		  getConnection();
+		  int cnt = -1;
+		  String sql = "update product set pimage=null where pnum=?";
+		  try {
+			ps= conn.prepareStatement(sql);
+			ps.setInt(1, pnum);
+			cnt =ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				
+				if(conn!=null) {
+					conn.close();
+				}
+				if(ps!=null) {
+					ps.close();
+				}
+				
+			}catch (SQLException e){
+				e.printStackTrace();
+			}
+				
+			
+		}
+		  
+		  return cnt;
+		  
+	  }
+
+	  public ArrayList<ProductBean> getSelectBySpec(String spec) {
+		  getConnection();
+		  ArrayList<ProductBean> lists = new ArrayList<ProductBean>();
+		  String sql = "select * from product where pspec=?";
+		 
+		  try {
+			  	ps=conn.prepareStatement(sql);
+				  ps.setString(1, spec);
+				  rs=ps.executeQuery();
+				  lists = makeArrayList(rs);
+				
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		  finally {
 		         try {
 		            if(ps!=null)
 		            	ps.close();
-		            
+		            if(rs!=null)
+		               rs.close();
+		            if(conn!=null)
+		               conn.close();
+		         } catch (SQLException e) {
+		            e.printStackTrace();
+		         }
+		      }
+		  return lists;
+		  
+	  }
+	  public ArrayList<ProductBean> selectListByCode(String code) {
+		  getConnection();
+		  ArrayList<ProductBean> lists = new ArrayList<ProductBean>();
+		  String sql = "select * from product where pcategory_fk like ?";
+		  try {
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, code+"%");
+			rs =ps.executeQuery();
+			lists = makeArrayList(rs);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+	         try {
 		            if(ps!=null)
 		            	ps.close();
+		            if(rs!=null)
+		               rs.close();
+		            if(conn!=null)
+		               conn.close();
 		         } catch (SQLException e) {
 		            e.printStackTrace();
 		         }
 		      }
 		      
-		      
-		      return cnt;
-		   }
-
+		return lists;
+				  
+		  
+	  }
+	  
 }

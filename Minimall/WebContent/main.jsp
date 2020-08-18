@@ -3,7 +3,6 @@
 main.jsp
 <!-- 외부에있는 css파일을 가져다 쓰겠다. -->
 <link rel="stylesheet" type="text/css" href="style.css">
-
 </style>
 <form action="loginPro.jsp" method="post">
 <table border="1">
