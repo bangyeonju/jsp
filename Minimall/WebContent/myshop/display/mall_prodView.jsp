@@ -5,19 +5,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <script type="text/javascript">
-	function goCart(){
+	function goCart(pnum){
 	//	alert("goCart");
+	
 	oqty = document.f.oqty.value;
 	if(oqty<1){
 		alert("1 보다 큰수 입력해주세영");
 		return;
 		}
-	
-		location.href="<%=request.getContextPath()%>/myshop/display/mall_cartAdd.jsp"
+		location.href="<%=request.getContextPath()%>/myshop/display/mall_cartAdd.jsp?pnum="+pnum+"&oqty="+oqty;
 	
 	}
-	function goOrder(){
-		alert("goOrder");
+	function goOrder(pnum){
+		//alert("goOrder");
+		/* action은 굳이 oqty넘기지 않아도 넘어간다. */
+		document.f.action="<%=request.getContextPath()%>/myshop/display/mall_order.jsp?pnum="+pnum;
+		document.f.submit();
 	}
 </script>
 <%@ include file="mall_top.jsp"%>
@@ -44,7 +47,7 @@ DecimalFormat df= new DecimalFormat("###,###");
 		<img src="<%=request.getContextPath()%>/myshop/images/<%=pb.get(0).getPimage()%>"
 			width="200" height="200"></td>
 		<td >
-			<form name="f" method="post" >
+			<form name="f" method="post">
 			상품번호:<%=pb.get(0).getPnum() %><br> 
 			상품이름:<%=pb.get(0).getPname() %><br>
 			상품가격:<font color="red"><%=df.format(pb.get(0).getPrice())%></font>원<br>
@@ -53,12 +56,12 @@ DecimalFormat df= new DecimalFormat("###,###");
 			<table width="90%" align="center">
 				<tr>	
 					<td>
-						<a href="javascript:goCart()">
+						<a href="javascript:goCart(<%=pnum%>)">
 							<img src="../images/cartbtn.gif" width="90" height="35"/>
 						</a>
 					</td>
 						<td>
-						<a href="javascript:goOrder()">
+						<a href="javascript:goOrder(<%=pnum%>)">
 							<img src="../images/orderbtn.gif" width="90" height="35"/>
 						</a>
 					</td>

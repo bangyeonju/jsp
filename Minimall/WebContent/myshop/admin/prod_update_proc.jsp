@@ -11,8 +11,8 @@ int maxSize=1024*1024*5;
 String encType="UTF-8";
 String uploadDir=sc.getRealPath("/myshop/images");
 MultipartRequest mr = new MultipartRequest(request, uploadDir, maxSize, encType, new DefaultFileRenamePolicy());
-String old_pimage=mr.getParameter("old_pimage");
-System.out.println("old_pimage"+old_pimage);//파일이름이 글자로 들어가 있당
+String old_pimage=mr.getParameter("old_pimage");//파일이름이 단순히 글자로 들어가 있기때문에 getParameter 사용
+System.out.println("old_pimage"+old_pimage);
 String pimage =mr.getFilesystemName("pimage");
 System.out.println("pimage"+pimage);
 //새로운 이미지를 올리고 삭제함..?

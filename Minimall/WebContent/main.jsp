@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 main.jsp
+<% 
+// 세션무효화
+session.invalidate();
+
+ %>
 <!-- 외부에있는 css파일을 가져다 쓰겠다. -->
 <link rel="stylesheet" type="text/css" href="style.css">
 </style>
