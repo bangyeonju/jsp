@@ -30,21 +30,17 @@ public class CategoryDAO {
 	public CategoryDAO() {
 		try {
 			Class.forName(driver);
-			System.out.println("카테고리 드라이버 성공");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("카테고리 드라이버 실패");
 		}
 	}
 	private void getConnection() {
 		try {
 			conn=DriverManager.getConnection(url,username,userpw);
-			System.out.println("객체생성성공!");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("객체생성실패!");
 		}
 	}
 	public int categoryInsert(String code, String cname) {

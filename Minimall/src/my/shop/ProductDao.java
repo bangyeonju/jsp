@@ -32,18 +32,14 @@ public class ProductDao {
 	private ProductDao() {
 		try {
 			Class.forName(driver);
-			System.out.println("드라이버 로드 성공");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			System.out.println("드라이버 로드 실패");
 		}
 	}
 	private void getConnection() {
 		try {
 			conn=DriverManager.getConnection(url,username,userpw);
-			System.out.println("객체성고오오오옹");
 		} catch (SQLException e) {
-			System.out.println("객체생성 실패!");
 			e.printStackTrace();
 		}
 	}

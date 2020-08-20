@@ -18,7 +18,9 @@ String memid=(String)session.getAttribute("memid");
 	<tr>
 		<td colspan="2" align="center">
 			<a href="<%=contextPath%>/main.jsp">HOME</a>
+			<%if(memid.equals("admin")) {%>
 			<a href="<%=contextPath%>/myshop/admin/main.jsp">관리자홈</a>
+			<%} %>
 			<a href="<%=contextPath%>/myshop/display/mall.jsp">쇼핑몰</a>
 			<a href="<%=contextPath%>/myshop/display/mall_cartList.jsp">장바구니</a>
 			<a href="<%=contextPath%>/myshop/board/list.jsp">게시판</a>

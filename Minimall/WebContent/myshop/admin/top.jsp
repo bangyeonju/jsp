@@ -15,7 +15,7 @@ table{
 <font size =6>쇼핑몰 (관리자화면)</font><br>
 <a href="main.jsp"><font size =3>쇼핑몰홈</font></a>
 <a href="<%=request.getContextPath()%>/main.jsp"><font size =3>메인홈</font></a>
-<font size =3>로그아웃</font>
+<a href="<%=request.getContextPath()%>/logout.jsp"><font size =3>로그아웃</font></a>
 <table border="1" width="800" height="400">
 	<tr height="40">
 		<td align="center">

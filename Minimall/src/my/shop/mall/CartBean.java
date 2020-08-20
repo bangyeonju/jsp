@@ -14,6 +14,7 @@ public class CartBean {
 	public CartBean() {
 
 		clist = new Vector<ProductBean>();// 비어있는 장바구니를 만든당
+	//	System.out.println("clist="+clist);
 	}
 
 	public void addProduct(int pnum, int oqty) {
@@ -39,7 +40,6 @@ public class CartBean {
 								clist.get(j).getTotalPrice());
 				}
 				System.out.println("-------");
-				
 				return;
 			}
 		}
@@ -82,14 +82,13 @@ public class CartBean {
 				
 				pb.setTotalPrice(price);
 				pb.setTotalPoint(point);
-				
 				break;
 				}
 			}
 		}
 		
 	}//setEdit
-	
+	//장바구니에서 삭제를 누루거나 수량이0 이면 삭제된다.
 	public void removeProduct(int pnum) {
 		for(ProductBean pb : clist) {
 			if(pb.getPnum()==pnum) {
@@ -98,5 +97,9 @@ public class CartBean {
 			}
 		}
 		
+	}
+	//장바구니 안에있는거 삭제 
+	public void removeAllProduct() {
+		clist.removeAllElements();
 	}
 }

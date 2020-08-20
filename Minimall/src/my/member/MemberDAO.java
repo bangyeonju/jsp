@@ -30,18 +30,14 @@ public class MemberDAO {
 	private MemberDAO() {
 		try {
 			Class.forName(driver);
-			System.out.println("드라이버 로드성공");
 		} catch (ClassNotFoundException e) {
-			System.out.println("드라이버 로드실패");
 			e.printStackTrace();
 		}
 	}
 	private void getConnection() {
 		try {
 			conn=DriverManager.getConnection(url,username,userpw);
-			System.out.println("객체생성성공");
 		} catch (SQLException e) {
-			System.out.println("객체생성실패");
 			e.printStackTrace();
 		}
 	}
@@ -233,7 +229,6 @@ public class MemberDAO {
 				
 			
 		}
-		System.out.println(mdto);
 	return mdto;	
 	}
 

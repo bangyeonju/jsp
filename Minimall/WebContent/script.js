@@ -93,8 +93,27 @@ function passwd_keyup(){
 }//passwd_keyup
 
 
+//비밀번호 유효검사
+function pwcheck() {
+	//alert("pwcheck()");
+	var pw = document.forms[0].password.value; 
+	var regexp =/^[a-z0-9]{3,8}$/i;// i=>대소문 자 구별하지 않는다아.
+	if(!regexp.test(pw)){
+		alert("비밀번호 형식이 틀렸습니다.");
+		return false;
+	}
 
-
+	var chk_num = pw.search(/[0-9]/);
+	var chk_eng =pw.search(/[a-z]/i);
+	
+	if(chk_num < 0 || chk_eng<0) {
+		
+		alert("비밀번호는 영문자 숫자 조합해 주세요");
+		return false;
+	}
+//	test(0) : true, flase 리턴!
+//	search : 검색된 문자열에 위치를 리턴!
+}
 
 
 

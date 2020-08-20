@@ -26,6 +26,9 @@
 <%@ include file="mall_top.jsp"%>
 
 <%
+
+application.setAttribute("flag",true); // flag =true // application 객체는 프로젝트당 하나만 만들어진다 다른곳에서도 이정보를 쓸수 있다.
+System.out.println("mall_prodView.jsp flag:"+application.getAttribute("flag"));
 int pnum= Integer.parseInt(request.getParameter("pnum"));
 ProductDao pdao = ProductDao.getInstance();
 
