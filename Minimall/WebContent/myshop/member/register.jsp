@@ -21,7 +21,7 @@ myshop\member\register.jsp <br><br>
 	</tr>
 	<tr>
 		<th bgcolor="yellow" align="center"> * 비밀 번호</th>
-		<td><input type="password" name="password" onBlur="return pwcheck()"> 영문 소문자/숫자 조합 3~8자</td>
+		<td><input type="password" name="password" onBlur="return pwcheck()" > 영문 소문자/숫자 조합 3~8자</td>
 	</tr>
 	<tr>
 		<th bgcolor="yellow" align="center"> * 비밀 번호 확인</th>

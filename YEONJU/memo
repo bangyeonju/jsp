@@ -1,0 +1,25 @@
+drop sequence memseq;
+
+create sequence y_memseq  
+increment by 1
+start with 1
+minvalue 1
+maxvalue 10000
+nocache;
+
+drop table y_members purge ;
+
+create table y_members(
+no number primary key,
+name varchar2(50) not null,
+id varchar2(20) not null,
+password varchar2(20),
+email varchar2(30),
+phone varchar2(30)
+);
+
+
+col name for  a12
+col id for a12
+col password for a12
+
