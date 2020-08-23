@@ -271,6 +271,8 @@ public class MovieDao {
 		return flag; // true, false
 		
 	}//searchId
+	
+
 }
 
 

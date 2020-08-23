@@ -23,3 +23,17 @@ col name for  a12
 col id for a12
 col password for a12
 
+
+create table food(
+pnum number not null,
+pname varchar2(40) not null,
+pqty number ,
+pimage varchar2(50) not null,
+price number not null,
+pcontent varchar2(100),
+pspec varchar2(30),
+totalPrice number,
+salePrice number,
+totalpoint number
+);
+

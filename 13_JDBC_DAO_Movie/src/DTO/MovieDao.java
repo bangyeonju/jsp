@@ -8,9 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 
+
+
 public class MovieDao {
 	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+	String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	String user = "jspid";
 	String pw = "jsppw";
 
@@ -158,51 +160,95 @@ public class MovieDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		  
+		  finally {
+				try {
+					if(conn != null) {
+						conn.close();
+					}
+					if(ps != null) {
+						ps.close();
+					}
+					
+				} catch (Exception e2) {
+				}
+			}
 		  
 		  
 		  
 		  return cnt;
 	  }
 	  
-	  public MovieBean getMovieByNum(int num) {
-		  getConnection();
-		  String sql ="select * from movie where num=?";
-		  MovieBean mb=null;
-		  try {
-			ps= conn.prepareStatement(sql);
-			ps.setInt(1, num);
-			rs= ps.executeQuery();
-			
-			while(rs.next()) {
-				String id=rs.getString("id");
-				String name= rs.getString("name");
-				int age = rs.getInt("age");
-				String genre = rs.getString("genre");
-				String time =rs.getString("time");
-				int partner =rs.getInt("partner");
-				String memo = rs.getString("memo");
-				
-				mb = new MovieBean(0,id,name,age,genre,time,partner,memo);
+	  public MovieBean getMovieByNum(int num){ 
+
+			String sql = "select * from movie where num=?";
+			PreparedStatement pstmt=null;
+			ResultSet rs = null;
+			MovieBean member=null;
+			try{
+				pstmt=conn.prepareStatement(sql);
+				pstmt.setInt(1,num);
+				rs = pstmt.executeQuery();
+
+				if(rs.next()){ 
+					String id = rs.getString("id");
+					String name = rs.getString("name");
+					int age = rs.getInt("age");
+					String genre = rs.getString("genre");
+					String time = rs.getString("time");
+					int partner = rs.getInt("partner");
+					String memo = rs.getString("memo");
+					member = new MovieBean(0,id,name,age,genre,time,partner,memo); 
+				}
+					
+			} catch (Exception e){
+				e.printStackTrace();
+			}finally{
+				try{
+					if(rs!=null)
+						rs.close();
+					if(pstmt!=null)
+						pstmt.close();
+					if(conn!=null)
+						conn.close();
+				}catch(SQLException e){
+					e.printStackTrace();
+				}
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				if (conn != null) {
-					conn.close();
-				}
-				if (ps != null) {
-					ps.close();
-				}
-				if (rs != null) {
-					rs.close();
-				}
-			} catch (Exception e2) {
-			}
+			return member;		
 		}
-		  return mb;
-	  }
 	 
-	
+	  public int updateData(MovieBean bean){
+			PreparedStatement pstmt=null;
+
+			String sql = "update movie set  name=?, age=?, genre=?, time=?, partner=?, memo=? where num=?";
+			int cnt = -1;
+
+			try{
+				pstmt = conn.prepareStatement(sql);
+
+				pstmt.setString(1, bean.getName());
+				pstmt.setInt(2, bean.getAge());
+				pstmt.setString(3, bean.getGenre());
+				pstmt.setString(4, bean.getTime());
+				pstmt.setInt(5,bean.getPartner());
+				pstmt.setString(6, bean.getMemo());
+				pstmt.setInt(7, bean.getNum());
+				
+				cnt = pstmt.executeUpdate();
+				
+			}catch(Exception e){
+				e.printStackTrace();
+
+			}finally{
+				try{
+					if(pstmt!=null)
+						pstmt.close();
+					if(conn!=null)
+						conn.close();
+				}catch(Exception e2){
+					e2.printStackTrace();
+				}
+			}
+			return cnt;
+		}
 }

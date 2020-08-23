@@ -7,8 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import oracle.net.aso.a;
-import oracle.net.aso.p;
 
 public class CategoryDAO {
 	public static CategoryDAO cdao;
