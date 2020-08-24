@@ -10,7 +10,7 @@ MemberDao mdao = MemberDao.getInstance();
 MemberBean mb = mdao.getMemberInfo(id,password);
 String msg,url="";
 if(mb!=null){ //가입된회원
-	url=request.getContextPath()+"/yshop/admin/main.jsp";
+	url=request.getContextPath()+"/yshop/admin/kind_list.jsp";
 	System.out.print("1");
 	msg="로그인 성공";
 } else {

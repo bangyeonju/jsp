@@ -40,7 +40,7 @@ C:\jsp\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Minimall\m
  System.out.println("pn:"+pn);//null
  String pimage = mr.getFilesystemName("pimage");
  System.out.println("pimage:"+pimage);
- 
+  
  ProductDao pdao= ProductDao.getInstance();
  String msg="";
  String url="";

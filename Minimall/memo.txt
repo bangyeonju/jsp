@@ -1,0 +1,147 @@
+
+
+-- ȸ�� ���̺� ����
+drop sequence memseq ;
+
+create sequence memseq  
+increment by 1
+start with 1
+minvalue 1
+maxvalue 10000
+nocache;
+
+ 
+drop table members purge ;
+create table members(
+	no number primary key,
+	name varchar2(30) not null,
+	id varchar2(12) not null,
+	password varchar2(12),
+	rrn1 varchar2(10),
+	rrn2 varchar2(10),
+	email varchar2(20),
+	hp1 varchar2(10),
+	hp2 varchar2(10),
+	hp3 varchar2(20),
+	joindate varchar2(20) 				
+);
+
+insert into members(no, name, id, password, rrn1, rrn2) 
+values(memseq.nextval, '����', 'admin', '1234', '111111', '2222222') ;
+insert into members(no, name, id, password, rrn1, rrn2) 
+values(memseq.nextval, 'ȫ�浿', 'hong', '5678', '333333', '4444444') ;
+commit;
+
+
+col name for  a12
+col id for a12
+col password for a12
+col rrn1 for a10
+col rrn2 for a10
+select no, name, id, password, rrn1, rrn2 from members ;
+
+
+-- ī�װ� ���̺�
+drop sequence catseq ;
+drop table category purge ;
+
+--create sequence catseq nocache ;
+create sequence catseq
+increment by 1
+start with 1
+minvalue 1
+maxvalue 10000
+nocache;
+
+
+create table category(
+	cnum 	number primary key,
+	code 	varchar2(20) not null,
+	cname 	varchar2(50) not null
+);
+
+
+-- ��ǰ ���̺�
+drop sequence catprod ;
+
+create sequence catprod 
+increment by 1
+start with 1
+minvalue 1
+maxvalue 10000
+nocache;
+
+drop table product purge ;
+create table product(
+	pnum 		number not null primary key,
+	pname 		varchar2(50) not null,
+	pcategory_fk  	varchar2(20) not null, -- ������ ī�װ�
+	pcompany 	varchar2(50),
+	pimage   		varchar2(30),
+	pqty   int default 0,
+	price   		int default 0,
+	pspec   		varchar2(12),
+	pcontents 	varchar2(300),
+	point   		int default 0,
+	pinputdate 	varchar2(10)
+);
+
+col pname for a12
+col pcompany for a12
+col pimage for a12
+col pcontents for a12
+select * from product  ;
+
+drop sequence boardseq ;
+create sequence boardseq nocache;  
+
+-- ���� �ֹ� ���̺�
+drop sequence orderseq ;
+
+create sequence orderseq 
+increment by 1
+start with 1
+minvalue 1
+maxvalue 10000
+nocache;
+ 
+ 
+-- orderId(�ֹ� ���̵�) : ������ �ð��뿡 �ֹ��� ������ ������ �ֹ� ���̵� ������.
+drop table orders purge ;
+create table orders(
+	orderId number, -- �ֹ���ȣ(orderseq)
+	memno number, -- ȸ����ȣ
+	pnum number, -- ��ǰ��ȣ
+	qty number, -- ����
+	amount number -- ��ü����
+);
+
+drop table board cascade constraints purge ;
+create table board(
+	num number not null primary key,
+	writer varchar2(10) not null,
+	email varchar2(10),
+	subject varchar2(20) not null,
+	passwd varchar2(12) not null,
+	reg_date date not null,
+	readcount int default 0,
+	ref number  default 0 not null,
+	re_step number default 0 not null,
+	re_level number default 0 not null,
+	content varchar2(50) not null,
+	ip varchar2(15)  not null
+);
+
+drop sequence board_seq ;
+
+create sequence board_seq
+increment by 1
+start with 1
+minvalue 1
+maxvalue 10000
+nocache;
+
+commit ;
+
+
+
