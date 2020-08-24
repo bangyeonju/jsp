@@ -4,7 +4,7 @@
     pageEncoding="UTF-8"%>
 <%
 	int fnum = Integer.parseInt(request.getParameter("fnum"));
-	
+	String configFolder = config.getServletContext().getRealPath("/yshop/images");
 	KindDao kdao = KindDao.getInstance();
  	int cnt = kdao.deleteKind(fnum);
 	String msg= "",url="kind_list.jsp";

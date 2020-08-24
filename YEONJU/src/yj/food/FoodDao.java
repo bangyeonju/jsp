@@ -20,7 +20,7 @@ public class FoodDao {
 		return fdao;
 	}
 	String driver ="oracle.jdbc.driver.OracleDriver";
-	String url ="jdbc:oracle:thin:@localhost:1521:orcl";
+	String url ="jdbc:oracle:thin:@localhost:1521:xe";
 	String user = "jspid";
 	String password= "jsppw";
 	
@@ -173,16 +173,16 @@ public class FoodDao {
 		return cnt;
 	}
 	
-	public FoodBean selectFood(int pum) {
+	public ArrayList<FoodBean> selectFood(int pnum) {
 		getConnect();
-		FoodBean fb = new FoodBean();
+		ArrayList<FoodBean> lists = new ArrayList<FoodBean>();
 		String sql = "select * from food where pnum =?";
 		try {
 			ps= conn.prepareStatement(sql);
-			ps.setInt(1, fb.getPnum());
+			ps.setInt(1,pnum);
 			rs = ps.executeQuery();
-			System.out.println(fb.getPnum());
 			if(rs.next()) {
+				FoodBean fb = new FoodBean();
 				fb.setPnum(rs.getInt("pnum"));
 				fb.setPname(rs.getString("pname"));
 				fb.setPkind_fk(rs.getString("pkind_fk"));
@@ -192,6 +192,8 @@ public class FoodDao {
 				fb.setPcontent(rs.getString("pcontent"));
 				fb.setPspec(rs.getString("pspec"));
 				fb.setPoint(rs.getInt("point"));
+				lists.add(fb);
+				
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -211,12 +213,8 @@ public class FoodDao {
 				e.printStackTrace();
 			}
 				
-			
 		}
-		
-		
-		return fb;
-		
+		return lists;
 		
 	}
 }

@@ -18,7 +18,7 @@ public class KindDao {
 	}
 
 	String driver ="oracle.jdbc.driver.OracleDriver";
-	String url ="jdbc:oracle:thin:@localhost:1521:orcl";
+	String url ="jdbc:oracle:thin:@localhost:1521:xe";
 	String user = "jspid";
 	String password= "jsppw";
 	

@@ -1,6 +1,6 @@
 <%@page import="yj.kind.KindBean"%>
-<%@page import="java.util.ArrayList"%>
 <%@page import="yj.kind.KindDao"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file = "top.jsp" %>

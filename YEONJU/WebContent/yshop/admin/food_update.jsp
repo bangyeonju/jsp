@@ -1,3 +1,4 @@
+<%@page import="java.io.File"%>
 <%@page import="yj.food.FoodDao"%>
 <%@page import="yj.food.FoodBean"%>
 <%@page import="yj.kind.KindBean"%>
@@ -19,7 +20,7 @@
 			 KindDao kdao = KindDao.getInstance();
 			 ArrayList<KindBean> list = kdao.selectKind();
 			 FoodDao fdao = FoodDao.getInstance();
-			 FoodBean fb = fdao.selectFood(pnum);
+			 ArrayList<FoodBean> fb = fdao.selectFood(pnum);
 			 if(list.size()==0){
 				 %>
 				 <option value="">종류가 없습니다.</option>
@@ -37,51 +38,62 @@
 	</tr>
 	<tr>
 		<th>코드</th>
-		<td><input type="text" name="pcode" size="10"></td>
+		<td><input type="text" name="pcode" size="10" value="<%=fb.get(0).getPkind_fk()%>"></td>
 	</tr>
-
 
 	<tr>
 		<th>이름</th>
-		<td><input type="text" name="pname" size="10"></td>
+		<td><input type="text" name="pname" size="10" value="<%=fb.get(0).getPname()%>"></td>
 	</tr>
+
 
 	<tr>
 		<th>가격</th>
-		<td><input type="text" name="price" size="10"></td>
+		<td><input type="text" name="price" size="10" value="<%=fb.get(0).getPrice() %>"></td>
 	</tr>
 
 	<tr>
 		<th>수량</th>
-		<td><input type="text" name="pqty" size="10"></td>
+		<td><input type="text" name="pqty" size="10" value="<%=fb.get(0).getPqty()%>"></td>
 	</tr>
 
 
 	<tr>
 		<th>이미지</th>
-		<td><input type="file" name="pimage"></td>
+		<td>
+		<%
+			String imgFolder = request.getContextPath() +"/myshop/images";
+		%>
+			<img src="<%=imgFolder%>/<%=fb.get(0).getPimage()%>" width="100" height="100">
+			<input type="file" name="pimage">
+		<%
+		if(fb.get(0).getPimage() !=null){
+			File existFile= new File(configFolder,fb.get(0).getPimage());
+		}
+		
+		%>
+		</td>
 	</tr>
-
 
 
 	<tr>
 		<th>상품스펙</th>
 		<td><select name="pspec">
-				<option value="NORMAL">::NORMAL::</option>
-				<option value="HIT">HIT</option>
-				<option value="NEW">NEW</option>
-				<option value="BEST">BEST</option>
+				<option value="NORMAL" <% if(fb.get(0).getPspec().equals("NORMALL")){%>selected<%}%>>::NORMAL::</option>
+				<option value="HIT" <% if(fb.get(0).getPspec().equals("HIT")){%>selected<%}%>>HIT</option>
+				<option value="NEW" <% if(fb.get(0).getPspec().equals("NEW")){%>selected<%}%>>NEW</option>
+				<option value="BEST" <% if(fb.get(0).getPspec().equals("BEST")){%>selected<%}%>>BEST</option>
 		</select></td>
 
 	</tr>
 	<tr>
 		<th>포인트</th>
-		<td><input type="text" name="point" size="10"></td>
+		<td><input type="text" name="point" size="10" value="<%=fb.get(0).getPoint()%>"></td>
 	</tr>
 	
 	<tr>
 		<th>설명</th>
-		<td><textarea name="pcontent" cols="50" style="resize: none"; rows="10"></textarea>
+		<td><textarea name="pcontent" cols="50" style="resize: none"; rows="10"><%=fb.get(0).getPcontent() %></textarea>
 		</td>
 	</tr>
 	<tr>
