@@ -7,20 +7,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file = "top.jsp" %>
-<form action="food_update.jsp" method="post" enctype="multipart/form-data">
+<form action="food_updateProc.jsp" method="post" enctype="multipart/form-data">
 <% request.setCharacterEncoding("UTF-8"); %>
 <table border="1" align="center">
-
+<%
+int pnum = Integer.parseInt(request.getParameter("pnum"));
+FoodDao fdao = FoodDao.getInstance();
+ArrayList<FoodBean> fb = fdao.selectFood(pnum);
+%>
 	<tr>
+		<td>
+		<%=fb.get(0).getPnum() %>
+		<input type="hidden" name="pnum" size="10" value="<%=fb.get(0).getPnum()%>">
+		</td>
+	</tr>
+	<tr>	
+		
 		<th>종류</th>
 		<td><select name="pkind_fk">
 			<%
-			 int pnum = Integer.parseInt(request.getParameter("pnum"));
-			 
 			 KindDao kdao = KindDao.getInstance();
 			 ArrayList<KindBean> list = kdao.selectKind();
-			 FoodDao fdao = FoodDao.getInstance();
-			 ArrayList<FoodBean> fb = fdao.selectFood(pnum);
+			 
 			 if(list.size()==0){
 				 %>
 				 <option value="">종류가 없습니다.</option>
@@ -38,7 +46,8 @@
 	</tr>
 	<tr>
 		<th>코드</th>
-		<td><input type="text" name="pcode" size="10" value="<%=fb.get(0).getPkind_fk()%>"></td>
+		<td><input type="text" name="pkind_fk" size="10" value="<%=fb.get(0).getPkind_fk()%>"disabled >
+		</td>
 	</tr>
 
 	<tr>
@@ -62,13 +71,22 @@
 		<th>이미지</th>
 		<td>
 		<%
-			String imgFolder = request.getContextPath() +"/myshop/images";
+		String imgFolder = request.getContextPath() +"/yshop/images";
+		String configFolder = config.getServletContext().getRealPath("/yshop/images");
 		%>
 			<img src="<%=imgFolder%>/<%=fb.get(0).getPimage()%>" width="100" height="100">
 			<input type="file" name="pimage">
 		<%
+		//System.out.print(fb.get(0).getPimage());
 		if(fb.get(0).getPimage() !=null){
 			File existFile= new File(configFolder,fb.get(0).getPimage());
+			if(existFile.exists()){
+				%>
+				<input type="text" name ="old_pimage" value="<%=fb.get(0).getPimage() %>">
+				<%
+			} else{
+				fdao.updatePimage(pnum);
+			}
 		}
 		
 		%>

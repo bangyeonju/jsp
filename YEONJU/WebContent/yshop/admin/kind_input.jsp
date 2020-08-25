@@ -9,8 +9,9 @@
 		음식코드
 	</th>
 	<td>
-		<input type="text" name="fcode" >
-		
+		마카롱<input type="radio" name="fcode" value="macaroon">
+		빵 및 케익 <input type="radio" name="fcode" value="desert">
+		음료<input type="radio" name="fcode" value="drink">
 	</td>
 </tr>
 <tr>

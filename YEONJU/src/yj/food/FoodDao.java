@@ -20,7 +20,7 @@ public class FoodDao {
 		return fdao;
 	}
 	String driver ="oracle.jdbc.driver.OracleDriver";
-	String url ="jdbc:oracle:thin:@localhost:1521:xe";
+	String url ="jdbc:oracle:thin:@localhost:1521:orcl";
 	String user = "jspid";
 	String password= "jsppw";
 	
@@ -217,4 +217,132 @@ public class FoodDao {
 		return lists;
 		
 	}
+	public void updatePimage(int pnum) {
+		getConnect();
+		int cnt = -1;
+		String sql="update food set pimage=null where pnum=?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, pnum);
+			cnt = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		}finally {
+			try {
+				
+				if(conn!=null) {
+					conn.close();
+				}
+				if(ps!=null) {
+					ps.close();
+				}
+			}catch (SQLException e){
+				e.printStackTrace();
+			}
+				
+			
+		}
+		
+	}
+	
+	public int foodUpdate(MultipartRequest mr) {
+		getConnect();
+		int cnt = -1;
+		String sql = "update food set pname=?,pkind_fk=?,pqty=?, pimage=? ,price=?, pcontent=?,"
+				+ " pspec=?, point= ? where pnum =?"; 
+		try {
+			ps= conn.prepareStatement(sql);
+			String pname = mr.getParameter("pname");
+			String pkind_fk = mr.getParameter("pkind_fk");
+			String pqty = mr.getParameter("pqty");
+			String pimage = mr.getParameter("pimage");
+			String old_pimage=mr.getFilesystemName("old_pimage");
+			if(pimage == null) {
+				pimage = old_pimage;
+			}
+			String price = mr.getParameter("price");
+			String pcontent =mr.getParameter("pcontent");
+			String pspec =mr.getParameter("pspec");
+			String point = mr.getParameter("point");
+			String pnum = mr.getParameter("pnum");
+			System.out.println("pnum="+pnum);
+			
+			ps.setString(1, pname);
+			ps.setString(2,pkind_fk);
+			ps.setString(3, pqty);
+			ps.setString(4, pimage);
+			ps.setString(5, price);
+			ps.setString(6, pcontent);
+			ps.setString(7, pspec);
+			ps.setString(8, point);
+			ps.setString(9, pnum);
+			
+			cnt = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				
+				if(conn!=null) {
+					conn.close();
+				}
+				if(ps!=null) {
+					ps.close();
+				}
+			}catch (SQLException e){
+				e.printStackTrace();
+			}
+				
+			
+		}
+		return cnt;
+	}
+	public ArrayList<FoodBean> getOneSelectByPnum(int pnum){
+		getConnect();
+		ArrayList<FoodBean> lists = new ArrayList<FoodBean>();
+		String sql= "select * from food where pnum=?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, pnum);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				FoodBean fb = new FoodBean();
+				fb.setPnum(rs.getInt("pnum"));
+				fb.setPname(rs.getString("pname"));
+				fb.setPkind_fk(rs.getString("pkind_fk"));
+				fb.setPqty(rs.getInt("pqty"));
+				fb.setPimage(rs.getString("pimage"));
+				fb.setPrice(rs.getInt("price"));
+				fb.setPcontent(rs.getString("pcontent"));
+				fb.setPspec(rs.getString("pspec"));
+				fb.setPoint(rs.getInt("point"));
+				lists.add(fb);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				
+				if(conn!=null) {
+					conn.close();
+				}
+				if(ps!=null) {
+					ps.close();
+				}
+				if(rs!=null) {
+					rs.close();
+				}
+			}catch (SQLException e){
+				e.printStackTrace();
+			}
+				
+		}
+		
+		return lists;
+	}
+
+ 
 }

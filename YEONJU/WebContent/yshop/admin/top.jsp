@@ -6,6 +6,7 @@
 <td><a href="kind_list.jsp">종류 목록보기</a></td>
 <td><a href="food_input.jsp">상품 추가 </a></td>
 <td><a href="food_list.jsp">상품 목록보기 </a></td>
+<td><a href="<%=request.getContextPath() %>/yshop/display/main.jsp">사용자 페이지 </a></td>
 
 </tr>
 </table>

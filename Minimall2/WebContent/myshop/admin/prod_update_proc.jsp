@@ -1,7 +1,7 @@
-<%@page import="java.io.File"%>
-<%@page import="my.shop.ProductDao"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
+<%@page import="java.io.File"%>
+<%@page import="my.shop.ProductDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 prod_update_proc.jsp<br><br>

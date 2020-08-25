@@ -38,7 +38,18 @@ ArrayList<FoodBean> lists = fdao.foodList();
 				<td><%=fb.getPkind_fk() %></td>
 				<td><%=fb.getPname() %></td>
 				<td><%=fb.getPrice()%></td>
-				<td><%=fb.getPimage() %></td>
+			<%
+			String conpath=request.getContextPath();
+			System.out.println("conpath:"+conpath);// /Minimall
+			String conpath2 = request.getContextPath() + "/yshop/images/" + fb.getPimage();
+			System.out.println("conpath2:"+conpath2);
+			%>
+				<td>
+				<a href="food_view.jsp?pnum=<%=fb.getPnum()%>">
+					<img src="<%= conpath2%>" width=40 height=40>
+				</a>
+				</td>
+				
 				<td><%=fb.getPqty() %></td>
 				<td><%=fb.getPspec() %></td>
 				<td><%=fb.getPoint() %></td>

@@ -29,10 +29,10 @@
 		</select>
 		</td>
 	</tr>
-	<tr>
-		<th>코드</th>
-		<td><input type="text" name="pcode" size="10"></td>
-	</tr>
+
+		
+		<td><input type="hidden" name="pcode"  size="10"></td>
+	
 
 
 	<tr>

@@ -31,13 +31,13 @@ minvalue 1
 maxvalue 10000
 nocache;
 
-
+drop table food;
 create table food(
 pnum number primary key,
 pname varchar2(40) not null,
 pkind_fk varchar2(20) not null,
 pqty number default 0,
-pimage varchar2(50) not null,
+pimage varchar2(50),
 price number default 0,
 pcontent varchar2(100),
 pspec varchar2(30),
