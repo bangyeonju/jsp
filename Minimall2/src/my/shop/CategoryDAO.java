@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class CategoryDAO {
 	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url="jdbc:oracle:thin:@localhost:1521:orcl"  ;
+	String url="jdbc:oracle:thin:@localhost:1521:xe"  ;
 	String username="jspid" ; 
 	String password="jsppw" ;
 

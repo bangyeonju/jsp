@@ -14,7 +14,7 @@ import com.oreilly.servlet.MultipartRequest;
 public class ProductDao {
 
 	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url="jdbc:oracle:thin:@localhost:1521:orcl"  ;
+	String url="jdbc:oracle:thin:@localhost:1521:xe";
 	String username="jspid" ; 
 	String password="jsppw" ;
 
@@ -188,7 +188,7 @@ public class ProductDao {
 
 	}// makeArrayList
 
-	// »ó¼¼º¸±â, ¼öÁ¤form, »óÇ°»ó¼¼º¸±â, Àå¹Ù±¸´Ï ´ã±â,mall_cartEdit.jsp
+	// ï¿½ó¼¼ºï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½form, ï¿½ï¿½Ç°ï¿½ó¼¼ºï¿½ï¿½ï¿½, ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½,mall_cartEdit.jsp
 	public ArrayList<ProductBean> getOneSelectByPnum(int pnum){
 
 		getConnection();
@@ -260,7 +260,7 @@ public class ProductDao {
 			String pcategory_fk = mr.getParameter("pcategory_fk");
 			String pcompany = mr.getParameter("pcompany");
 			String pimage = mr.getFilesystemName("pimage");
-			String old_pimage = mr.getParameter("old_pimage"); // ÀÌÀüÀÌ¹ÌÁö.jpg
+			String old_pimage = mr.getParameter("old_pimage"); // ï¿½ï¿½ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½.jpg
 			System.out.println("dao pimage:"+pimage);
 			System.out.println("dao old_pimage:"+old_pimage);
 			if(pimage == null) {
