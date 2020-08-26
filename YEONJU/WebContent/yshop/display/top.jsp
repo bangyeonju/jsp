@@ -13,7 +13,10 @@
 <%
 KindDao kdao = KindDao.getInstance();
 ArrayList<KindBean> list = kdao.selectKind();
+<<<<<<< HEAD
 String memid = (String)session.getAttribute("memid");
+=======
+>>>>>>> c256da0b8516f02a480294fa5000bc7098ed3aec
 %>  
 
  <a class="logout" href="<%=request.getContextPath() %>/logout.jsp">
@@ -29,11 +32,16 @@ String memid = (String)session.getAttribute("memid");
 </tr>
 
 <%
+
 if(list.size()==0){
 	
 	%>
 	<tr>
+<<<<<<< HEAD
 	<td align ="center" >
+=======
+	<td>
+>>>>>>> c256da0b8516f02a480294fa5000bc7098ed3aec
 	카테고리 없습니다.
 	</td>
 	</tr>
@@ -46,8 +54,13 @@ if(list.size()==0){
 	System.out.print(kb.getFcode());
 		%>
 		
+<<<<<<< HEAD
 			<td height="50" align ="center" >
 				<a href="<%=request.getContextPath() %>/yshop/display/mall_kLikst.jsp?kcode=<%=kb.getFcode()%>&kname=<%=kname%>"><%=kname %></a>
+=======
+			<td>
+				<a href="<%=request.getContextPath() %>/yshop/display/mall_kLikst.jsp?kcode=<%=kb.getFname()%>&kname=<%=kname%>"><%=kcode %></a>
+>>>>>>> c256da0b8516f02a480294fa5000bc7098ed3aec
 			</td>
 		
 		<% 

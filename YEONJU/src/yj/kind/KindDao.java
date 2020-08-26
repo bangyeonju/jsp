@@ -18,7 +18,7 @@ public class KindDao {
 	}
 
 	String driver ="oracle.jdbc.driver.OracleDriver";
-	String url ="jdbc:oracle:thin:@localhost:1521:orcl";
+	String url ="jdbc:oracle:thin:@localhost:1521:xe";
 	String user = "jspid";
 	String password= "jsppw";
 	
@@ -136,6 +136,7 @@ public class KindDao {
 		}
 		return cnt ;
 	}
+<<<<<<< HEAD
 	public ArrayList<KindBean>selectFcode(){
 		ArrayList<KindBean> list = new ArrayList<KindBean>();
 		getConnect();
@@ -156,5 +157,8 @@ public class KindDao {
 		return list;
 		
 	}
+=======
+
+>>>>>>> c256da0b8516f02a480294fa5000bc7098ed3aec
 	
 }
