@@ -3,6 +3,7 @@ package yj.food;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.PseudoColumnUsage;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -256,7 +257,7 @@ public class FoodDao {
 			String pname = mr.getParameter("pname");
 			String pkind_fk = mr.getParameter("pkind_fk");
 			String pqty = mr.getParameter("pqty");
-			String pimage = mr.getParameter("pimage");
+			String pimage = mr.getFilesystemName("pimage");
 			String old_pimage=mr.getFilesystemName("old_pimage");
 			if(pimage == null) {
 				pimage = old_pimage;
@@ -343,6 +344,81 @@ public class FoodDao {
 		
 		return lists;
 	}
-
- 
+	public ArrayList<FoodBean> getSelectByKind(String kcode){
+		getConnect();
+		ArrayList<FoodBean> lists= new ArrayList<FoodBean>();
+		String sql = "select * from food where pkind_fk like ?";
+		
+			try {
+				ps= conn.prepareStatement(sql);
+				ps.setString(1, kcode+"%");
+				rs= ps.executeQuery();
+				
+				while(rs.next()) {
+					FoodBean fb = new FoodBean();
+					fb.setPnum(rs.getInt("pnum"));
+					fb.setPname(rs.getString("pname"));
+					fb.setPkind_fk(rs.getString("pkind_fk"));
+					fb.setPqty(rs.getInt("pqty"));
+					fb.setPimage(rs.getString("pimage"));
+					fb.setPrice(rs.getInt("price"));
+					fb.setPcontent(rs.getString("pcontent"));
+					fb.setPspec(rs.getString("pspec"));
+					fb.setPoint(rs.getInt("point"));
+					lists.add(fb);
+					
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					
+					if(conn!=null) {
+						conn.close();
+					}
+					if(ps!=null) {
+						ps.close();
+					}
+					if(rs!=null) {
+						rs.close();
+					}
+				}catch (SQLException e){
+					e.printStackTrace();
+				}
+					
+			}
+			
+			return lists;
+	}
+public ArrayList<FoodBean> getselectBySpec(String spec){
+		getConnect();
+		ArrayList<FoodBean> lists = new ArrayList<FoodBean>();
+		String sql = "select * from food where pspec =? ";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, spec);
+			rs=ps.executeQuery();
+			
+			while(rs.next()) {
+				FoodBean fb = new FoodBean();
+				fb.setPnum(rs.getInt("pnum"));
+				fb.setPname(rs.getString("pname"));
+				fb.setPkind_fk(rs.getString("pkind_fk"));
+				fb.setPqty(rs.getInt("pqty"));
+				fb.setPimage(rs.getString("pimage"));
+				fb.setPrice(rs.getInt("price"));
+				fb.setPcontent(rs.getString("pcontent"));
+				fb.setPspec(rs.getString("pspec"));
+				fb.setPoint(rs.getInt("point"));
+				lists.add(fb);
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return lists;
+	}
 }

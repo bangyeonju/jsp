@@ -29,12 +29,13 @@
 			File delFile = new File(dir,old_pimage);
 		
 			if(delFile.exists()){
+				if(delFile.delete()){
 				%>
 				<script type="text/javascript">
 					alert("이미지파일삭제성공");
 				</script>
 				<%
-				
+				}
 			}
 		}
 	}

@@ -142,6 +142,14 @@ public class KindDao {
 		String sql = "select * from f_kind where fcode =? ";
 		try {
 			ps = conn.prepareStatement(sql);
+			rs=ps.executeQuery();
+			while(rs.next()) {
+				KindBean kb = new KindBean();
+				kb.setFnum(rs.getInt("fnum"));
+				kb.setFcode(rs.getString("fcode"));
+				kb.setFname(rs.getString("fname"));
+				list.add(kb);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

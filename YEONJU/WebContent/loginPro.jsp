@@ -10,9 +10,20 @@ MemberDao mdao = MemberDao.getInstance();
 MemberBean mb = mdao.getMemberInfo(id,password);
 String msg,url="";
 if(mb!=null){ //가입된회원
-	url=request.getContextPath()+"/yshop/admin/kind_list.jsp";
-	System.out.print("1");
-	msg="로그인 성공";
+	
+	String _id =mb.getId();
+	int _no = mb.getNo();
+	if(_id.equals("admin")){
+		url=request.getContextPath()+"/yshop/admin/kind_list.jsp";
+		System.out.print("1");
+		msg="로그인 성공";
+	} else {
+		url=request.getContextPath()+"/yshop/display/main.jsp";
+		msg="로그인 성공";
+	}
+
+	session.setAttribute("memid",_id);
+	session.setAttribute("memno",_no);
 } else {
 	url="main.jsp";
 	System.out.print("2");

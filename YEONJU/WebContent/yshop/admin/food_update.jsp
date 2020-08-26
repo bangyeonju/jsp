@@ -44,14 +44,12 @@ ArrayList<FoodBean> fb = fdao.selectFood(pnum);
 		</select>
 		</td>
 	</tr>
-	<tr>
-		<th>코드</th>
-		<td><input type="text" name="pkind_fk" size="10" value="<%=fb.get(0).getPkind_fk()%>"disabled >
-		</td>
-	</tr>
+	
+	
 
 	<tr>
 		<th>이름</th>
+		<input type="hidden" name="pkind_fk" size="10" value="<%=fb.get(0).getPkind_fk()%>"disabled >
 		<td><input type="text" name="pname" size="10" value="<%=fb.get(0).getPname()%>"></td>
 	</tr>
 

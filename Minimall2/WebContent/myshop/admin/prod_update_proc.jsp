@@ -43,8 +43,8 @@ prod_update_proc.jsp<br><br>
 	
 	File dir = new File(uploadDir);
 	
-	if(pimage2 != null){ // 
-		if(old_pimage != null) { // 
+	if(pimage2 != null){ // 수정할 이미지가 null이 아니고
+		if(old_pimage != null) { // 기존이미지가 null이 아니면
 			File delFile = new File(dir,old_pimage);
 			
 			if(delFile.exists()){ // 

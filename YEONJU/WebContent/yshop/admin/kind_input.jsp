@@ -12,6 +12,7 @@
 		마카롱<input type="radio" name="fcode" value="macaroon">
 		빵 및 케익 <input type="radio" name="fcode" value="desert">
 		음료<input type="radio" name="fcode" value="drink">
+		세트상품<input type="radio" name="fcode" value="setfood">
 	</td>
 </tr>
 <tr>
@@ -19,7 +20,7 @@
 		음식이름
 	</th>
 	<td>
-		<input type="text" name="fname" >
+		<input type="text" name="fname">
 	</td>
 </tr>
 <tr>
