@@ -3,7 +3,6 @@ package yj.food;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.PseudoColumnUsage;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ public class FoodDao {
 		return fdao;
 	}
 	String driver ="oracle.jdbc.driver.OracleDriver";
-	String url ="jdbc:oracle:thin:@localhost:1521:orcl";
+	String url ="jdbc:oracle:thin:@localhost:1521:xe";
 	String user = "jspid";
 	String password= "jsppw";
 	

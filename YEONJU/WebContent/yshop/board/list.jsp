@@ -11,11 +11,13 @@
 	
 	int pageSize =10;
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	
 	String pageNum = request.getParameter("pageNum");
 	if(pageNum==null){
 		pageNum="1";
 	}
 	int currentPage = Integer.parseInt(pageNum);
+	
 	int startRow = (currentPage - 1) * pageSize +1;
 	int endRow = currentPage * pageSize;
 	int count=0;
@@ -28,7 +30,7 @@
 		alist = bdao.getArticles(startRow,endRow);
 	}
 	
-
+	number =count - (currentPage-1) * pageSize;
 %>    
 
 <body>
@@ -64,7 +66,7 @@
 			<td width="15%"><%=number--%></td>
 			<td width="20%" align="center"><%=bb.getWriter()%></td>
 			<td width="30%" align="center"><a href="content.jsp?num=<%=bb.getNum()%>&pageNum=<%=currentPage%>"><%=bb.getSubject()%></a></td>
-			<td width="20%" align="center"><%=bb.getReg_date()%></td>
+			<td width="20%" align="center"><%=sdf.format(bb.getReg_date())%></td>
 			<td width="15%"><%=bb.getReadcount()%></td>
 			</tr>
 			<%

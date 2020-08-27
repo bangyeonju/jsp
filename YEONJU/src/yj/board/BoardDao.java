@@ -8,14 +8,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import javax.security.auth.Subject;
 
-import jdk.internal.reflect.ReflectionFactory.GetReflectionFactoryAction;
 
 public class BoardDao {
 	
 	String driver ="oracle.jdbc.driver.OracleDriver";
-	String url ="jdbc:oracle:thin:@localhost:1521:orcl";
+	String url ="jdbc:oracle:thin:@localhost:1521:xe";
 	String user = "jspid";
 	String password= "jsppw";
 	
@@ -202,6 +200,52 @@ public class BoardDao {
 			}
 		}
 		return lists;
+	}
+	
+	public BoardBean getContent(int num) {
+		getConnection();
+		String sql_update = "update y_board set readcount = readcount + 1 where num= ?";
+		String sql = "select * from y_board where num=?";
+		BoardBean bb = null;
+		try {
+			ps = conn.prepareStatement(sql_update);
+			ps.setInt(1, num);
+			ps.executeQuery();
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, num);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				bb = new BoardBean();
+				bb.setNum(rs.getInt("num"));
+				bb.setNum(rs.getInt("num"));
+				bb.setWriter(rs.getString("writer"));
+				bb.setSubject(rs.getString("subject"));
+				bb.setPasswd(rs.getString("passwd"));
+				bb.setReg_date(rs.getTimestamp("reg_date"));
+				bb.setReadcount(rs.getInt("readcount"));
+				bb.setRef(rs.getInt("ref"));
+				bb.setRe_step(rs.getInt("re_step"));
+				bb.setRe_level(rs.getInt("re_level"));
+				bb.setContent(rs.getString("content"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null)
+					rs.close();
+				if(ps!=null)
+					ps.close();
+				if(conn!=null)
+					conn.close();
+			}catch(Exception e) {
+
+			}
+		}
+		
+		return bb;
 	}
 	
 }

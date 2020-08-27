@@ -9,6 +9,11 @@
 .logout {
 	float: right;
 }
+td{
+font-size:15px;
+
+}
+
 </style>
 <%
 KindDao kdao = KindDao.getInstance();
@@ -25,9 +30,12 @@ String memid = (String)session.getAttribute("memid");
 <table border="1" width="100%" cellspacing="0">
 
 	<tr>
-		<td colspan="<%=list.size()+3%>" align="center"><img
+		<td colspan="<%=list.size()+5%>" align="center" >
+			<img
 			src="<%=request.getContextPath() %>/images/1.jpg" weight="500"
-			height="200"></td>
+			height="150">
+			
+			</td>
 	</tr>
 
 	<%
@@ -36,10 +44,8 @@ if(list.size()==0){
 	
 	%>
 	<tr>
-		<td align="center">
-		<td>카테고리 없습니다.</td>
-	</tr>
-	<tr>
+		<td align="center">카테고리 없습니다.</td>
+	
 		<% 
 }else{
 	for(KindBean kb : list){
@@ -48,7 +54,8 @@ if(list.size()==0){
 	System.out.print(kb.getFcode());
 		%>
 
-		<td height="50" align="center"><a
+		<td height="30" align="center">
+		<a
 			href="<%=request.getContextPath() %>/yshop/display/mall_kLikst.jsp?kcode=<%=kb.getFcode()%>&kname=<%=kname%>"><%=kname %></a>
 		</td>
 

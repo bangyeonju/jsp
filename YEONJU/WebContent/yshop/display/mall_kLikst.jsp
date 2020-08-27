@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    <%@include file="top.jsp"%>
+   
+  <style type="text/css">
+  
+  
+ 
+
+</style>
 <%
 String kcode = request.getParameter("kcode");
 String kname= request.getParameter("kname");
@@ -18,7 +25,7 @@ if(lists.size()==0){
 	<% 
 }else{
 	%>
-	<table border="1" align="center" cellspacing= "0">
+	<table align="center" cellspacing= "0" cellpadding="40">
 	
 	<tr>
 	<%

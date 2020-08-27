@@ -75,14 +75,16 @@ create table y_board(
 	re_level number default 0 not null,
 	content varchar2(50) not null,
 );
-drop sequence yboard_seq;
-create sequence yboard_seq
+drop sequence board_seq;
+create sequence board_seq
 increment by 1
 start with 1
 minvalue 1
 maxvalue 10000
 nocache;
 
-commit ;
+drop sequence board_seq ;
+create sequence board_seq nocache;  
 
-ㅂ
+
+commit ;
