@@ -1,6 +1,6 @@
 
 
--- È¸¿ø Å×ÀÌºí »ý¼º
+-- È¸ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½
 drop sequence memseq ;
 
 create sequence memseq  
@@ -27,9 +27,9 @@ create table members(
 );
 
 insert into members(no, name, id, password, rrn1, rrn2) 
-values(memseq.nextval, '¾îµå¹Î', 'admin', '1234', '111111', '2222222') ;
+values(memseq.nextval, 'ï¿½ï¿½ï¿½ï¿½', 'admin', '1234', '111111', '2222222') ;
 insert into members(no, name, id, password, rrn1, rrn2) 
-values(memseq.nextval, 'È«±æµ¿', 'hong', '5678', '333333', '4444444') ;
+values(memseq.nextval, 'È«ï¿½æµ¿', 'hong', '5678', '333333', '4444444') ;
 commit;
 
 
@@ -41,7 +41,7 @@ col rrn2 for a10
 select no, name, id, password, rrn1, rrn2 from members ;
 
 
--- Ä«Å×°í¸® Å×ÀÌºí
+-- Ä«ï¿½×°ï¿½ ï¿½ï¿½ï¿½Ìºï¿½
 drop sequence catseq ;
 drop table category purge ;
 
@@ -61,7 +61,7 @@ create table category(
 );
 
 
--- »óÇ° Å×ÀÌºí
+-- ï¿½ï¿½Ç° ï¿½ï¿½ï¿½Ìºï¿½
 drop sequence catprod ;
 
 create sequence catprod 
@@ -75,7 +75,7 @@ drop table product purge ;
 create table product(
 	pnum 		int not null primary key,
 	pname 		varchar2(50) not null,
-	pcategory_fk  	varchar2(20) not null, -- ¼±ÅÃÇÑ Ä«Å×°í¸®
+	pcategory_fk  	varchar2(20) not null, -- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½×°ï¿½
 	pcompany 	varchar2(50),
 	pimage   		varchar2(30),
 	pqty   int default 0,
@@ -92,10 +92,8 @@ col pimage for a12
 col pcontents for a12
 select * from product  ;
 
-drop sequence boardseq ;
-create sequence boardseq nocache;  
 
--- ¸ÅÃâ ÁÖ¹® Å×ÀÌºí
+-- ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¹ï¿½ ï¿½ï¿½ï¿½Ìºï¿½
 drop sequence orderseq ;
 
 create sequence orderseq 
@@ -106,14 +104,14 @@ maxvalue 10000
 nocache;
  
  
--- orderId(ÁÖ¹® ¾ÆÀÌµð) : µ¿ÀÏÇÑ ½Ã°£´ë¿¡ ÁÖ¹®ÇÑ ³»¿ªÀº µ¿ÀÏÇÑ ÁÖ¹® ¾ÆÀÌµð¸¦ °¡Áø´Ù.
+-- orderId(ï¿½Ö¹ï¿½ ï¿½ï¿½ï¿½Ìµï¿½) : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ë¿¡ ï¿½Ö¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¹ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 drop table orders purge ;
 create table orders(
-	orderId number, -- ÁÖ¹®¹øÈ£(orderseq)
-	memno number, -- È¸¿ø¹øÈ£
-	pnum number, -- »óÇ°¹øÈ£
-	qty number, -- ¼ö·®
-	amount number -- ÀüÃ¼°¡°Ý
+	orderId number, -- ï¿½Ö¹ï¿½ï¿½ï¿½È£(orderseq)
+	memno number, -- È¸ï¿½ï¿½ï¿½ï¿½È£
+	pnum number, -- ï¿½ï¿½Ç°ï¿½ï¿½È£
+	qty number, -- ï¿½ï¿½ï¿½ï¿½
+	amount number -- ï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½
 );
 
 drop table board cascade constraints purge ;
@@ -140,6 +138,10 @@ start with 1
 minvalue 1
 maxvalue 10000
 nocache;
+
+
+drop sequence boardseq ;
+create sequence boardseq nocache;  
 
 commit ;
 

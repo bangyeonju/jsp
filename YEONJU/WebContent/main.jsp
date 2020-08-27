@@ -16,7 +16,7 @@
 		<input type="submit" value="로그인">
 		<input type="button" onClick="location.href='<%=request.getContextPath()%>/yshop/member/register.jsp'" value="회원가입">
 		<input type="button" onClick="location.href='<%=request.getContextPath()%>/idSearch.jsp'"value="아이디 찾기">
-		<input type="button" value="비밀번호 찾기">
+		<input type="button" onClick="location.href='<%=request.getContextPath()%>/pwSearch.jsp'" value="비밀번호 찾기">
 		</td>
 	</tr>
 </table>

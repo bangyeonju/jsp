@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class MemberDAO {
 	
 	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url="jdbc:oracle:thin:@localhost:1521:xe"  ;
+	String url="jdbc:oracle:thin:@localhost:1521:orcl"  ;
 	String username="jspid" ; 
 	String password="jsppw" ;
 	
@@ -189,7 +189,7 @@ public class MemberDAO {
 		
 	} // getMemberByIdAndName
 	
-	private MemberDTO getMemberBean(ResultSet rs) { // idÃ£ï¿½ï¿½, pwÃ£ï¿½ï¿½, ï¿½Î±ï¿½ï¿½ï¿½
+	private MemberDTO getMemberBean(ResultSet rs) { // idÃ£±â, pwÃ£±â, ·Î±×ÀÎ
 		
 		MemberDTO mdto = new MemberDTO();
 		try {

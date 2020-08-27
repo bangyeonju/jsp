@@ -18,17 +18,17 @@ if(lists.size()==0){
 	<% 
 }else{
 	%>
-	<table border="1">
+	<table border="1" align="center" cellspacing= "0">
+	
 	<tr>
 	<%
-	
 	int count =0;
 	for(FoodBean fb : lists){
 		count++;
 		String imgPath = request.getContextPath() + "/yshop/images/"+fb.getPimage();
 		%>
 		<td>
-		<a href="food_view.jsp?pnum=<%=fb.getPnum()%>"><img src ="<%=imgPath%>" width="80" height="60"></a><br>
+		<a href="food_view.jsp?pnum=<%=fb.getPnum()%>"><img src ="<%=imgPath%>" width="200" height="180"></a><br>
 		<%=fb.getPspec() %><br>
 		<%=fb.getPname() %><br>
 		<%=fb.getPrice() %><br>

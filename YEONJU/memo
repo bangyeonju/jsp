@@ -60,3 +60,29 @@ create table f_kind(
 fnum number primary key,
 fcode varchar2(20) not null,
 fname varchar2(20) not null);
+
+
+drop table y_board;
+create table y_board(
+	num number not null primary key,
+	writer varchar2(10) not null,
+	subject varchar2(20) not null,
+	passwd varchar2(12) not null,
+	reg_date date not null,
+	readcount int default 0,
+	ref number  default 0 not null,
+	re_step number default 0 not null,
+	re_level number default 0 not null,
+	content varchar2(50) not null,
+);
+drop sequence yboard_seq;
+create sequence yboard_seq
+increment by 1
+start with 1
+minvalue 1
+maxvalue 10000
+nocache;
+
+commit ;
+
+ㅂ

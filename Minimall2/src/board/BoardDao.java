@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class BoardDao {
 
 	String driver = "oracle.jdbc.driver.OracleDriver";
-	String url="jdbc:oracle:thin:@localhost:1521:xe"  ;
+	String url="jdbc:oracle:thin:@localhost:1521:orcl"  ;
 	String username="jspid" ; 
 	String password="jsppw" ;
 	Connection conn = null;
@@ -34,7 +34,7 @@ public class BoardDao {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-	} // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	} // »ý¼ºÀÚ
 
 	public void getConnection(){  
 		try {
@@ -131,7 +131,7 @@ public class BoardDao {
 		
 	}//getArticles
 	
-	public int insertArticle(BoardBean article){ // ï¿½ï¿½ï¿½Û¾ï¿½ï¿½ï¿½ 
+	public int insertArticle(BoardBean article){ // ¿ø±Û¾²±â 
 		getConnection();
 		int cnt = -1;
 		String sql = "insert into board(num,writer,email,subject,passwd,reg_date,ref,re_step,re_level,content,ip) " + 
@@ -250,9 +250,9 @@ public class BoardDao {
 		
 	}// deleteArticle
 	
-	public int replyArticle(BoardBean article){ // ï¿½ï¿½Û¾ï¿½ï¿½ï¿½
-		//ref,re_step,re_level : ï¿½Î¸ï¿½ï¿½
-		//subject,writer,passwd.. : ï¿½ï¿½ï¿½ï¿½
+	public int replyArticle(BoardBean article){ // ´ä±Û¾²±â
+		//ref,re_step,re_level : ºÎ¸ð°Í
+		//subject,writer,passwd.. : ³»°Í
 		getConnection();
 		int cnt = -1;
 		String sql_update = "update board set re_step = re_step+1 where ref=? and re_step > ?";
@@ -299,7 +299,7 @@ public class BoardDao {
 		
 	}//
 	
-	public BoardBean updateGetArticle(int num){ // updateFormï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½
+	public BoardBean updateGetArticle(int num){ // updateFormÀ» ¸¸µé±â À§ÇØ È£Ãâ
 		
 		getConnection();
 		

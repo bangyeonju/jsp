@@ -66,7 +66,7 @@ list.jsp<br>
 		</tr>
 	</table>
 <%		
-	} else{
+	} else {
 		   
 %>
 	<table width="600" align="center" border="1">

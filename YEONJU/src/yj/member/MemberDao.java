@@ -19,7 +19,7 @@ public class MemberDao {
 	}
 	
 	String driver ="oracle.jdbc.driver.OracleDriver";
-	String url ="jdbc:oracle:thin:@localhost:1521:xe";
+	String url ="jdbc:oracle:thin:@localhost:1521:orcl";
 	String user = "jspid";
 	String password= "jsppw";
 	
@@ -148,4 +148,90 @@ public class MemberDao {
 		return mb;
 	}//getMemberInfo
 	
+	public MemberBean searchId(String name,String email){
+		getConnect();
+		String sql = "select * from y_members where name=? and email=?";
+		MemberBean mb=null;
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, name);
+			ps.setString(2, email);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				mb = new MemberBean();
+				mb.setNo(rs.getInt("no"));
+				mb.setName(rs.getString("name"));
+				mb.setId(rs.getString("id"));
+				mb.setPassword(rs.getString("password"));
+				mb.setEmail(rs.getString("email"));
+				mb.setPhone(rs.getString("phone"));
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				if(ps!=null) {
+					ps.close();
+				}
+				if(conn!=null) {
+					conn.close();
+				}
+				if(rs!=null) {
+					rs.close();
+				}
+				
+			}catch (Exception e) {
+			}
+		}
+		
+		
+		return mb;
+	}
+	
+	public MemberBean searchPw(String name,String id,String email) {
+		getConnect();
+		MemberBean mb = null;
+		String sql = "select * from y_members where name =? and id =? and email =?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, name);
+			ps.setString(2, id);
+			ps.setString(3, email);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				mb = new MemberBean();
+				mb.setNo(rs.getInt("no"));
+				mb.setName(rs.getString("name"));
+				mb.setId(rs.getString("id"));
+				mb.setPassword(rs.getString("password"));
+				mb.setEmail(rs.getString("email"));
+				mb.setPhone(rs.getString("phone"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				if(ps!=null) {
+					ps.close();
+				}
+				if(conn!=null) {
+					conn.close();
+				}
+				if(rs!=null) {
+					rs.close();
+				}
+				
+			}catch (Exception e) {
+			}
+		}
+		
+		
+		
+		return mb;
+	}
 }

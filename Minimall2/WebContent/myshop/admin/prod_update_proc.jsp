@@ -1,7 +1,7 @@
-<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
-<%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="java.io.File"%>
 <%@page import="my.shop.ProductDao"%>
+<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 prod_update_proc.jsp<br><br>
@@ -43,19 +43,18 @@ prod_update_proc.jsp<br><br>
 	
 	File dir = new File(uploadDir);
 	
-	if(pimage2 != null){ // 수정할 이미지가 null이 아니고
-		if(old_pimage != null) { // 기존이미지가 null이 아니면
+	if(pimage2 != null){ // 
+		if(old_pimage != null) { // 
 			File delFile = new File(dir,old_pimage);
 			
 			if(delFile.exists()){ // 
-				if(delFile.delete()){
 					 
 	%>
 					<script type="text/javascript">
 						alert("이미지 화일 삭제 성공");
 					</script>
 	<%					
-				}
+				
 				
 			}
 		}
