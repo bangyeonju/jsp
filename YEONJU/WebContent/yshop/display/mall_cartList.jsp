@@ -4,10 +4,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    
+   <style type="text/css">
+   	  table{
+ 	margin-top:50;
+	 }
+   </style>
 <%@ include file="top.jsp" %>
     <jsp:useBean id="mallCart" class="yj.mall.CartBean" scope="session"/>
     
-    <table border="1" align="center"  cellspacing= "0" cellpadding="30" >
+    <table border="1" align="center"  cellspacing= "0" cellpadding="30" class="a">
     	<tr>
     		<td colspan="6" align="center">
     		<h3>장바구니 보기 </h3>

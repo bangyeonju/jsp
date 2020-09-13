@@ -10,9 +10,9 @@ body {
     width: 100%;
     text-align : center;
 }
-table {
-    margin: 0 auto;
-}   
+.a{
+ 	margin-top:50;
+}
 </style>   
 
 <%
@@ -42,7 +42,7 @@ table {
 
 <body>
 
-<table width="600"  border="1" align="center" >
+<table width="600"  border="1" align="center" class="a">
 	<tr height="30">
 	<td align="center">
 		<b>글목록(전체 글 : <%= count%>)</b>

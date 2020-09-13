@@ -1,7 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <style type="text/css">
+	  table{
+ 	margin-top:10;
+	 }
+	  </style>
 <form action="boardWriteProc.jsp" method="post">
 	  <%@include file="../display/top.jsp"%>
+	  
 <table align="center" border="1" cellspacing= "0" cellpadding="10">
 	<tr>
 	<td>글쓴이</td>
