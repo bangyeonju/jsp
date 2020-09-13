@@ -27,9 +27,9 @@ create table members(
 );
 
 insert into members(no, name, id, password, rrn1, rrn2) 
-values(memseq.nextval, '����', 'admin', '1234', '111111', '2222222') ;
+values(memseq.nextval,'관리자', 'admin', '1234', '111111', '2222222') ;
 insert into members(no, name, id, password, rrn1, rrn2) 
-values(memseq.nextval, 'ȫ�浿', 'hong', '5678', '333333', '4444444') ;
+values(memseq.nextval, '길동', 'hong', '5678', '333333', '4444444') ;
 commit;
 
 
@@ -61,7 +61,6 @@ create table category(
 );
 
 
--- ��ǰ ���̺�
 drop sequence catprod ;
 
 create sequence catprod 
@@ -75,7 +74,7 @@ drop table product purge ;
 create table product(
 	pnum 		number not null primary key,
 	pname 		varchar2(50) not null,
-	pcategory_fk  	varchar2(20) not null, -- ������ ī�װ�
+	pcategory_fk  	varchar2(20) not null, 
 	pcompany 	varchar2(50),
 	pimage   		varchar2(30),
 	pqty   int default 0,

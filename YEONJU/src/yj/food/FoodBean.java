@@ -12,13 +12,16 @@ public class FoodBean {
 	private int point;
 	private int totalprice;
 	private int saleprice;
-	private int totalpoiny;
+	private int totalpoint;
+	
+	
 	
 	public FoodBean() {
 		
 	}
+	
 	public FoodBean(int pnum, String pname, String pkind_fk, int pqty, String pimage, int price, String pcontent,
-			String pspec, int point, int totalprice, int saleprice, int totalpoiny) {
+			String pspec, int point, int totalprice, int saleprice, int totalpoint) {
 		super();
 		this.pnum = pnum;
 		this.pname = pname;
@@ -31,7 +34,7 @@ public class FoodBean {
 		this.point = point;
 		this.totalprice = totalprice;
 		this.saleprice = saleprice;
-		this.totalpoiny = totalpoiny;
+		this.totalpoint = totalpoint;
 	}
 	public int getPnum() {
 		return pnum;
@@ -99,11 +102,13 @@ public class FoodBean {
 	public void setSaleprice(int saleprice) {
 		this.saleprice = saleprice;
 	}
-	public int getTotalpoiny() {
-		return totalpoiny;
+	public int getTotalpoint() {
+		return totalpoint;
 	}
-	public void setTotalpoiny(int totalpoiny) {
-		this.totalpoiny = totalpoiny;
+	public void setTotalpoint(int totalpoint) {
+		this.totalpoint = totalpoint;
 	}
+	
+	
 	
 }

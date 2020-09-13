@@ -35,7 +35,7 @@ ArrayList<FoodBean> lists = fdao.foodList();
 	 for(FoodBean fb : lists){
 %>
 			<tr>
-				<td><%=fb.getPkind_fk() %></td>
+				<td><%=fb.getPnum() %></td>
 				<td><%=fb.getPname() %></td>
 				<td><%=fb.getPrice()%></td>
 			<%
@@ -46,7 +46,7 @@ ArrayList<FoodBean> lists = fdao.foodList();
 			%>
 				<td>
 				<a href="food_view.jsp?pnum=<%=fb.getPnum()%>">
-					<img src="<%= conpath2%>" width=40 height=40>
+					<img src="<%=conpath2%>" width=40 height=40>
 				</a>
 				</td>
 				

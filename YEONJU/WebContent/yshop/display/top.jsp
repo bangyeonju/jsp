@@ -54,7 +54,7 @@ if(list.size()==0){
 	System.out.print(kb.getFcode());
 		%>
 
-		<td height="30" align="center">
+		<td height="50" align="center">
 		<a
 			href="<%=request.getContextPath() %>/yshop/display/mall_kLikst.jsp?kcode=<%=kb.getFcode()%>&kname=<%=kname%>"><%=kname %></a>
 		</td>
@@ -66,10 +66,13 @@ if(list.size()==0){
 
 
 
-		<td align="center"><a href="">장바구니</a></td>
+		<td align="center"><a href="<%=request.getContextPath()%>/yshop/display/mall_cartList.jsp">장바구니</a></td>
 		<td align="center"><a
-			href="<%=request.getContextPath()%>/yshop/board/list.jsp">게시판</a></td>
-		<%if(memid.equals("admin")){%>
+			href="<%=request.getContextPath()%>/yshop/board/list.jsp">게시판
+				</a>
+		</td>
+		<%
+		if(memid.equals("admin")){%>
 		<td align="center"><a
 			href="<%=request.getContextPath()%>/yshop/admin/kind_list.jsp">관리자
 				페이지</a></td>

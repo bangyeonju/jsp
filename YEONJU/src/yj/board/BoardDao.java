@@ -248,4 +248,152 @@ public class BoardDao {
 		return bb;
 	}
 	
+	public int deletedate(int num, String passwd) {
+		getConnection();
+		int cnt = -1;
+		String sql ="select passwd from y_board where num=?";
+		String sql_delete ="delete from y_board where num=?";
+		
+		try {
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, num);
+			rs=ps.executeQuery();
+			
+			if(rs.next()) {
+				String dbpasswd =rs.getString("passwd");
+				if(dbpasswd.equals(passwd)) {
+					ps= conn.prepareStatement(sql_delete);
+					ps.setInt(1, num);
+					cnt = ps.executeUpdate();
+				}
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				
+				if(ps!=null)
+					ps.close();
+				if(conn!=null)
+					conn.close();
+			}catch(Exception e) {
+
+			}
+		}
+		return cnt;
+	}
+	public BoardBean selectList(int num) {
+		getConnection();
+		BoardBean bb =null;
+		String sql = "select * from y_board where num=?";
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, num);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				bb = new BoardBean();
+				bb.setNum(rs.getInt("num"));
+				bb.setWriter(rs.getString("writer"));
+				bb.setSubject(rs.getString("subject"));
+				bb.setPasswd(rs.getString("passwd"));
+				bb.setReg_date(rs.getTimestamp("reg_date"));
+				bb.setReadcount(rs.getInt("readcount"));
+				bb.setRef(rs.getInt("ref"));
+				bb.setRe_step(rs.getInt("re_step"));
+				bb.setRe_level(rs.getInt("re_level"));
+				bb.setContent(rs.getString("content"));
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null)
+					rs.close();
+				if(ps!=null)
+					ps.close();
+				if(conn!=null)
+					conn.close();
+			}catch(Exception e) {
+
+			}
+		}
+		
+		return bb;
+	}
+	
+	public int updateList(BoardBean bb) {
+		getConnection();
+		int cnt =-1;
+		String sql_update="update y_board set writer=?,subject=?,content=? where num=? and passwd=?";
+		try {
+			ps = conn.prepareStatement(sql_update);
+			ps.setString(1, bb.getWriter());
+			ps.setString(2, bb.getSubject());
+			ps.setString(3, bb.getContent());
+			ps.setInt(4, bb.getNum());
+			ps.setString(5, bb.getPasswd());
+			cnt = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null)
+					rs.close();
+				if(ps!=null)
+					ps.close();
+				if(conn!=null)
+					conn.close();
+			}catch(Exception e) {
+
+			}
+		}
+		return cnt;
+	}
+	public int replyboard(BoardBean bb) {
+		getConnection();
+		int cnt = -1;
+		String sql_update="update y_board set re_step=re_step+1 where ref =? and re_step > ?";
+		String sql_insert="insert into y_board(num,writer,subject,passwd,reg_date,ref,re_step,re_level,content) "+
+							" values(board_seq.nextval,?,?,?,?,?,?,?,?)";
+		try {
+			ps=conn.prepareStatement(sql_update);
+			ps.setInt(1, bb.getRef());
+			ps.setInt(2, bb.getRe_step());
+			ps.executeUpdate();
+			
+			int ref= bb.getRef();
+			int re_step = bb.getRe_step() +1;
+			int re_level = bb.getRe_level() +1;
+			
+			ps = conn.prepareStatement(sql_insert);
+			ps.setString(1, bb.getWriter());
+			ps.setString(2, bb.getSubject());
+			ps.setString(3, bb.getPasswd());
+			ps.setTimestamp(4, bb.getReg_date());
+			ps.setInt(5, ref);
+			ps.setInt(6,re_step);
+			ps.setInt(7, re_level);
+			ps.setString(8, bb.getContent());
+			 cnt = ps.executeUpdate();
+			
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				
+				if(ps!=null)
+					ps.close();
+				if(conn!=null)
+					conn.close();
+			}catch(Exception e) {
+
+			}
+		}
+		return cnt;
+	}
 }

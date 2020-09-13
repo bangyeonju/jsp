@@ -10,7 +10,8 @@
 	String encType="UTF-8";
 	ServletContext sc = config.getServletContext();
 	String uploadDir = sc.getRealPath("/yshop/images");
-
+	System.out.print("uploadDir:"+uploadDir);
+	
 	mr =new MultipartRequest(request,
 							uploadDir,
 							maxSize,

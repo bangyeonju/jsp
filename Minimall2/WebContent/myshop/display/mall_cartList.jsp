@@ -31,6 +31,7 @@
 	int cartTotalPoint=0;
 	
 	Vector<ProductBean> cv = mallCart.getAllProducts();
+	System.out.print(cv.size());
 	if(cv.size() == 0){
 		out.print("<tr><td colspan=6 align=center><b>장바구니에 상품이 없습니다.<b></td></tr></table>");
 	}

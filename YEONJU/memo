@@ -73,7 +73,7 @@ create table y_board(
 	ref number  default 0 not null,
 	re_step number default 0 not null,
 	re_level number default 0 not null,
-	content varchar2(50) not null,
+	content varchar2(50) not null
 );
 drop sequence board_seq;
 create sequence board_seq

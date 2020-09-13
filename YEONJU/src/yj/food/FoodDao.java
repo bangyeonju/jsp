@@ -45,18 +45,20 @@ public class FoodDao {
 		
 	}//getConnect()
 	public int insertFood(MultipartRequest mr) {
+		
 		getConnect();
 		int cnt = -1;
+		
 		String pname= mr.getParameter("pname");
 		String pkind_fk = mr.getParameter("pkind_fk");
 		pkind_fk += mr.getParameter("pcode");
 		System.out.println("pkind_fk="+pkind_fk);
-		int pqty =Integer.parseInt(mr.getParameter("pqty"));
+		String pqty =mr.getParameter("pqty");
 		String pimage = mr.getFilesystemName("pimage");
-		int price = Integer.parseInt(mr.getParameter("price"));
+		String price = mr.getParameter("price");
 		String pcontent = mr.getParameter("pcontent");
 		String pspec = mr.getParameter("pspec");
-		int point = Integer.parseInt(mr.getParameter("point"));
+		String point = mr.getParameter("point");
 		
 		String sql = "insert into food(pnum,pname,pkind_fk,pqty,pimage,price,pcontent,pspec,point) "
 				+ " values(foodseq.nextval,?,?,?,?,?,?,?,?)";
@@ -64,12 +66,13 @@ public class FoodDao {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1,pname);
 			ps.setString(2, pkind_fk);
-			ps.setInt(3, pqty);
+			ps.setString(3, pqty);
 			ps.setString(4, pimage);
-			ps.setInt(5, price);
+			ps.setString(5, price);
 			ps.setString(6, pcontent);
 			ps.setString(7, pspec);
-			ps.setInt(8, point);
+			ps.setString(8, point);
+			
 			cnt = ps.executeUpdate();
 			
 			
