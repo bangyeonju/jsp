@@ -3,6 +3,7 @@
 <%@page import="yj.board.BoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    	  <%@include file="../display/top.jsp"%>
 <%
 	 int num = Integer.parseInt(request.getParameter("num"));
 	int pageNum = Integer.parseInt(request.getParameter("pageNum"));
@@ -18,7 +19,7 @@
 	
 %> 
 
-<table width="500" boarder="1">
+<table border="1" align="center" width="500"  cellspacing= "0" cellpadding="10">
 <tr height="30">
 			<td align="center" width="125" >글번호</td>
 		    <td align="center" width="125"> <%=bb.getNum() %></td>

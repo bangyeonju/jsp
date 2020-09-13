@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+	  <%@include file="../display/top.jsp"%>
 
 <%
 
@@ -9,8 +9,7 @@ int re_step = Integer.parseInt(request.getParameter("re_step"));
 int re_level = Integer.parseInt(request.getParameter("re_level"));
 %>
 
-replyForm.jsp<br><br>
-<b>답글쓰기</b>
+
 <body >
 <form method="post" name="writeform" action="replyPro.jsp"  onsubmit="return writeSave()">
 	
@@ -18,9 +17,11 @@ replyForm.jsp<br><br>
 	<input type="hidden" name="re_step" value="<%=re_step%>"> 
 	<input type="hidden" name="re_level" value="<%=re_level%>"> 	
 	
-	<table border="1" width="450" align="center" cellspacing="0">
+	<table border="1" width="450" align="center"cellspacing= "0" cellpadding="10">
+		
 		<tr>
-			<td align="right" colspan="2">	 
+			<td align="right" colspan="2">
+				
 				<a href="list.jsp">글목록</a>
 			</td>
 		</tr>

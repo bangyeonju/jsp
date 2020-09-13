@@ -33,7 +33,7 @@ ArrayList<FoodBean> lists = fdao.getOneSelectByPnum(pnum);
 String imgPath = request.getContextPath() + "/yshop/images/"+lists.get(0).getPimage();
 %>
 <body>
-<table border="1"  align="center" >
+<table align="center" cellspacing= "0" cellpadding="40" >
 <tr>
 <td >
 	<img src ="<%=imgPath%>" width="200" height="180">

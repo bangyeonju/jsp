@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    <%@include file="top.jsp"%>
-   
+  
   <style type="text/css">
   
  table{
@@ -9,6 +9,7 @@
  }
 
 </style>
+
 <%
 String kcode = request.getParameter("kcode");
 String kname= request.getParameter("kname");
@@ -28,6 +29,7 @@ if(lists.size()==0){
 	%>
 	<table align="center" cellspacing= "0" cellpadding="40">
 	
+		
 	<tr>
 	<%
 	int count =0;
@@ -36,6 +38,20 @@ if(lists.size()==0){
 		String imgPath = request.getContextPath() + "/yshop/images/"+fb.getPimage();
 		%>
 		<td>
+		<div id="main">
+					<div class="inner">
+
+					<!-- Boxes -->
+						<div class="thumbnails">
+
+							
+
+							
+
+						</div>
+
+					</div>
+				</div>
 		<a href="food_view.jsp?pnum=<%=fb.getPnum()%>"><img src ="<%=imgPath%>" width="200" height="180"></a><br>
 		<%=fb.getPspec() %><br>
 		<%=fb.getPname() %><br>
@@ -52,6 +68,7 @@ if(lists.size()==0){
 	}
 	%></tr>
 	</table>
+	
 	<%
 }
 %>

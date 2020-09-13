@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    <%@include file="top.jsp"%>
+     <style type="text/css">
+  
+
+
+</style>
 <%
 String kcode = request.getParameter("kcode");
 String kname= request.getParameter("kname");
@@ -12,9 +17,8 @@ String[] spec = {"HIT","NEW","BEST","NORMAL"};
 		ArrayList<FoodBean> plists = fdao.getselectBySpec(spec[i]);
 %>
 <body style="text-align: center;">
-		<hr color=green width="80%">
+
 		<font color=red size=3 ><%=spec[i] %></font>
-		<hr color=green width="80%">
 		
 <%
 		if(plists.size()==0){
@@ -23,7 +27,7 @@ String[] spec = {"HIT","NEW","BEST","NORMAL"};
 		}
 	else{
 		%>
-		<table border="1" align="center">
+		<table align="center" cellspacing= "0" cellpadding="40">
 			<tr>
 		<%
 		int count=0;

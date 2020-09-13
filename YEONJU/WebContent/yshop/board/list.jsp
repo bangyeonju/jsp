@@ -4,6 +4,7 @@
 <%@page import="yj.board.BoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	  <%@include file="../display/top.jsp"%>
 <style type="text/css">
 body {
     width: 100%;
@@ -41,7 +42,7 @@ table {
 
 <body>
 
-<table width="600"  border="1" align="center">
+<table width="600"  border="1" align="center" >
 	<tr height="30">
 	<td align="center">
 		<b>글목록(전체 글 : <%= count%>)</b>
@@ -55,7 +56,7 @@ table {
 <%
 	if(count == 0){
 %>
-	<table width="600"  border="1">
+	<table width="600"  border="1" align="center" cellspacing= "0" cellpadding="10">
 		<tr height="30">
 			<td>게시판에 저장된 글이 없습니다.</td>
 		</tr>

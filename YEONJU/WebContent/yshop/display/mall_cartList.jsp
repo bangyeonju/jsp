@@ -7,10 +7,10 @@
 <%@ include file="top.jsp" %>
     <jsp:useBean id="mallCart" class="yj.mall.CartBean" scope="session"/>
     
-    <table align="center">
+    <table border="1" align="center"  cellspacing= "0" cellpadding="30" >
     	<tr>
     		<td colspan="6" align="center">
-    		<h4>장바구니 보기 </h4>
+    		<h3>장바구니 보기 </h3>
     		</td>
     	</tr>
     	<tr>
@@ -39,7 +39,7 @@
     			<tr>
     				<td align=center> <%=fb.getPnum() %> </td>
     				<td align=center>
-    					<img src="<%=imgPath %>" width="40" height="40"><br>
+    					<img src="<%=imgPath %>" width="70" height="70"><br>
     					<b><%=fb.getPname() %></b>
     				</td>
     				<td align=center> 

@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <form action="boardWriteProc.jsp" method="post">
-<table align="center" border="1">
+	  <%@include file="../display/top.jsp"%>
+<table align="center" border="1" cellspacing= "0" cellpadding="10">
 	<tr>
 	<td>글쓴이</td>
 	<td><input type="text" name="writer"></td>

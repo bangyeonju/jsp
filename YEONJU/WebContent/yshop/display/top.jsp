@@ -5,6 +5,15 @@
 <%@page import="yj.food.FoodDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+	 <meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!-- <link rel="stylesheet" href="../../assets/css/main.css" />  -->
+		<script src="../../assets/js/jquery.min.js"></script>
+			<script src="../../assets/js/jquery.scrolly.min.js"></script>
+			<script src="../../assets/js/jquery.poptrox.min.js"></script>
+			<script src="../../assets/js/skel.min.js"></script>
+			<script src="../../assets/js/util.js"></script>
+			<script src="../../assets/js/main.js"></script>
 <style type="text/css">
 .logout {
 	float: right;
